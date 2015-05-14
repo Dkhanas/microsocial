@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang={{ LANGUAGE_CODE }}>
+    <meta charset="UTF-8">
+    <title>{% block title %}test{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'microsocial/img/favicon.ico' %}" type="image/x-icon">
+    {% block css %}
+        <link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+        <link href="{% static 'microsocial/css/style.css' %}" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<div class="page-header">
+    {% block header %}
+        Header
+    {% endblock %}
+</div>
+    {% block content %}
+        <div>
+        Content
+        </div>
+    {% endblock %}
+    {% block footer %}
+        <div>
+            Footer
+        </div>
+    {% endblock %}
+</body>
+</html>
