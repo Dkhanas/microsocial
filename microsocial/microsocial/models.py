@@ -2,27 +2,29 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager, BaseUserManager
 from django.core.mail import send_mail
 from django.db import models
-from  django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
-    def _create_user(self, email,first_name, password, is_staff, is_superuser,  second_name, sex, birth_date, locations, work, about_self, interests, **extra_fields):
+    now = timezone.now()
+
+    def _create_user(self, email, first_name, password, is_staff, is_superuser,  birth_date,**extra_fields):
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, is_staff=is_staff, is_active=True, is_superuser =is_superuser,
-                          second_name=second_name, sex=sex,
-                          birth_date=birth_date, locations=locations,
-                          work=work, about_self=about_self,
-                          interests=interests, **extra_fields)
+                          birth_date=birth_date, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, first_name, password=None, **extra_fields):
-        return self._create_user(email, first_name, password, False, False,
+    def create_user(self, email, first_name, password=None, birth_date=now, **extra_fields):
+        return self._create_user(email, first_name, password, False, False, birth_date,
                                  **extra_fields)
-    def create_superuser(self, email, first_name, password=None, **extra_fields):
-        return self._create_user(email, first_name, password, True, True,
+
+    def create_superuser(self, email, first_name, password=None, birth_date=now,**extra_fields):
+        return self._create_user(email, first_name, password, True, True,birth_date,
                                  **extra_fields)
+
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -32,14 +34,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     SEX_CHOICES = (
         (SEX_MALE, u'чоловіча'),
         (SEX_FEMALE, u'жіноча'),
-        (SEX_DEFAULT, u'------'),
+        (SEX_DEFAULT, u'---------'),
     )
 
     email = models.EmailField(unique=True, verbose_name=u"Email")
     first_name = models.CharField(verbose_name=u"Ім'я", max_length='30')
     second_name = models.CharField(verbose_name=u"Фамілія", blank=True, max_length='40')
     sex = models.SmallIntegerField(verbose_name=u"Стать", choices=SEX_CHOICES, blank=True, default=2)
-    birth_date = models.DateField(verbose_name=u"Дата народження", blank=True)
+    birth_date = models.DateField(verbose_name=u"Дата народження", blank=True,)
     locations = models.CharField(verbose_name=u"Місто", blank=True, max_length='20')
     work = models.CharField(verbose_name=u"Місце роботи", blank=True, max_length='20')
     about_self = models.CharField(verbose_name=u"Про себе", blank=True, max_length='500')
@@ -52,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ('first_name','second_name','sex','birth_date','locations','work','about_self','interests',)
+    REQUIRED_FIELDS = ('first_name',)
 
     objects = UserManager()
 
