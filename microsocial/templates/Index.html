@@ -11,10 +11,12 @@
     {% endblock %}
 </head>
 <body>
-<div class="page-header">
+<div class="container">
+<header>
     {% block header %}
-        Header
+      <div class="h6">  {% include 'header.html' %}</div>
     {% endblock %}
+</header>
 </div>
     {% block content %}
         <div>
@@ -22,9 +24,11 @@
         </div>
     {% endblock %}
     {% block footer %}
-        <div>
-            Footer
-        </div>
+        <footer class="base">
+        <div class="container">
+            <a href="{% url 'about_page' %}">about</a>
+            </div>
+        </footer>
     {% endblock %}
 </body>
 </html>
