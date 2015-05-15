@@ -45,7 +45,7 @@ SITE_ID=1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-#    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,14 +81,18 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
+
 LANGUAGES = (
-    ('en', u'English'),
-    ('ru', u'Russian'),
-    ('uk', u'Ukraine'),
+    ('en', _(u'English')),
+    ('ru', _(u'Russian')),
+    ('uk', _(u'Ukraine')),
 
 )
 
-LANGUAGE_CODE = 'uk'
+LANGUAGE_CODE = 'en'
+
+SOLID_I18N_USE_REDIRECTS = True
 
 TIME_ZONE = 'UTC'
 

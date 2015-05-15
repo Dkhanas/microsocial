@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 11:42+0300\n"
+"POT-Creation-Date: 2015-05-15 17:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-#: .\microsocial\forms.py:7
+#: .\microsocial\forms.py:8
 msgid "Password"
 msgstr ""
 
-#: .\microsocial\forms.py:9
+#: .\microsocial\forms.py:10
 msgid "Password confirmation"
 msgstr ""
 
-#: .\microsocial\forms.py:11
+#: .\microsocial\forms.py:12
 msgid "Enter the same password as above, for verification."
 msgstr ""
 
@@ -53,4 +53,40 @@ msgstr ""
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
+msgstr ""
+
+#: .\microsocial\settings.py:87
+msgid "English"
+msgstr ""
+
+#: .\microsocial\settings.py:88
+msgid "Russian"
+msgstr ""
+
+#: .\microsocial\settings.py:89
+msgid "Ukraine"
+msgstr ""
+
+#: .\templates\Index.html:23
+msgid "Content"
+msgstr ""
+
+#: .\templates\Index.html:29
+msgid "about"
+msgstr ""
+
+#: .\templates\Index.html:30
+msgid "help"
+msgstr ""
+
+#: .\templates\Index.html:31
+msgid "advertisingz"
+msgstr ""
+
+#: .\templates\Index.html:32
+msgid "for developers"
+msgstr ""
+
+#: .\templates\Index.html:33
+msgid "vacancies"
 msgstr ""

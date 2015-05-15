@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 12:46+0300\n"
+"POT-Creation-Date: 2015-05-15 17:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,15 +26,15 @@ msgstr "Персональна Інформація"
 msgid "Permissions"
 msgstr "Дозволи"
 
-#: .\microsocial\forms.py:7
+#: .\microsocial\forms.py:8
 msgid "Password"
 msgstr "Пароль"
 
-#: .\microsocial\forms.py:9
+#: .\microsocial\forms.py:10
 msgid "Password confirmation"
 msgstr "Підтвердити пароль"
 
-#: .\microsocial\forms.py:11
+#: .\microsocial\forms.py:12
 msgid "Enter the same password as above, for verification."
 msgstr "Введіть той же пароль, як зазначено вище, для перевірки."
 
@@ -56,5 +55,41 @@ msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
-"Позначає це користувач повинен розглядатися як активний. Скасуйте цей"
-"Замість видалення облікових записів."
+"Позначає це користувач повинен розглядатися як активний. Скасуйте цейЗамість "
+"видалення облікових записів."
+
+#: .\microsocial\settings.py:87
+msgid "English"
+msgstr ""
+
+#: .\microsocial\settings.py:88
+msgid "Russian"
+msgstr ""
+
+#: .\microsocial\settings.py:89
+msgid "Ukraine"
+msgstr ""
+
+#: .\templates\Index.html:23
+msgid "Content"
+msgstr "Контент"
+
+#: .\templates\Index.html:29
+msgid "about"
+msgstr "про"
+
+#: .\templates\Index.html:30
+msgid "help"
+msgstr "допомога"
+
+#: .\templates\Index.html:31
+msgid "advertisingz"
+msgstr "реклама"
+
+#: .\templates\Index.html:32
+msgid "for developers"
+msgstr "для розробників"
+
+#: .\templates\Index.html:33
+msgid "vacancies"
+msgstr "вакансії"

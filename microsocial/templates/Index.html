@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html>
 <head lang={{ LANGUAGE_CODE }}>
@@ -20,21 +20,25 @@
 </div>
     {% block content %}
         <div>
-        Content
+        {% trans 'Content' %}
         </div>
     {% endblock %}
     {% block footer %}
         <footer class="base">
         <div class="container">
-            <a href="{% url 'about_page' %}">about</a>
-            <a href="{% url 'help_page' %}">help</a>
-            <a href="{% url 'advertising_page' %}">advertisingz</a>
-            <a href="{% url 'developers_page' %}">for developers</a>
-            <a href="{% url 'vacancies_page' %}">vacancies</a>
+            <a href="{% url 'about_page' %}">{% trans 'about'|capfirst %}</a>
+            <a href="{% url 'help_page' %}">{% trans 'help'|capfirst %}</a>
+            <a href="{% url 'advertising_page' %}">{% trans 'advertisingz'|capfirst %}</a>
+            <a href="{% url 'developers_page' %}">{% trans 'for developers'|capfirst %}</a>
+            <a href="{% url 'vacancies_page' %}">{% trans 'vacancies'|capfirst %}</a>
             <p>© Copiright {% now 'Y' %} </p>
 
             </div>
         </footer>
+    {% endblock %}
+    {% block js %}
+        <script src="{% static 'common/js/jquery-2.1.3.min.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     {% endblock %}
 </body>
 </html>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 11:43+0300\n"
+"POT-Creation-Date: 2015-05-15 17:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,38 +21,76 @@ msgstr ""
 
 #: .\microsocial\admin.py:18 .\microsocial\admin.py:26
 msgid "Personal info"
-msgstr ""
+msgstr "Персональная информация"
 
 #: .\microsocial\admin.py:21
 msgid "Permissions"
-msgstr ""
+msgstr "Разрешения"
 
-#: .\microsocial\forms.py:7
+#: .\microsocial\forms.py:8
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
-#: .\microsocial\forms.py:9
+#: .\microsocial\forms.py:10
 msgid "Password confirmation"
-msgstr ""
+msgstr "Подтверждение пароля"
 
-#: .\microsocial\forms.py:11
+#: .\microsocial\forms.py:12
 msgid "Enter the same password as above, for verification."
-msgstr ""
+msgstr "Введите тот же пароль, как указано выше, для проверки."
 
 #: .\microsocial\models.py:50
 msgid "staff status"
-msgstr ""
+msgstr "Статус персонала"
 
 #: .\microsocial\models.py:51
 msgid "Designates whether the user can log into this admin site."
-msgstr ""
+msgstr "Определяет, может ли пользователь войти в этот администратора сайта."
 
 #: .\microsocial\models.py:53
 msgid "active"
-msgstr ""
+msgstr "активный"
 
 #: .\microsocial\models.py:54
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
+"Обозначает ли это пользователь должен рассматриваться как активный. Отмените "
+"этотВместо удаления учетных записей."
+
+#: .\microsocial\settings.py:87
+msgid "English"
+msgstr ""
+
+#: .\microsocial\settings.py:88
+msgid "Russian"
+msgstr ""
+
+#: .\microsocial\settings.py:89
+msgid "Ukraine"
+msgstr ""
+
+#: .\templates\Index.html:23
+msgid "Content"
+msgstr "Контент"
+
+#: .\templates\Index.html:29
+msgid "about"
+msgstr "О сайте"
+
+#: .\templates\Index.html:30
+msgid "help"
+msgstr "помощь"
+
+#: .\templates\Index.html:31
+msgid "advertisingz"
+msgstr "реклама"
+
+#: .\templates\Index.html:32
+msgid "for developers"
+msgstr "для разработчиков"
+
+#: .\templates\Index.html:33
+msgid "vacancies"
+msgstr "вакансии"

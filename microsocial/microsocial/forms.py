@@ -3,12 +3,13 @@ from django import forms
 from microsocial.models import User
 from django.utils.translation import ugettext as _
 
+
 class CustomUserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label=_("Password"),
-        widget=forms.PasswordInput)
+                                widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Password confirmation"),
-        widget=forms.PasswordInput,
-        help_text=_("Enter the same password as above, for verification."))
+                                widget=forms.PasswordInput,
+                                help_text=_("Enter the same password as above, for verification."))
 
     class Meta:
         model = User
@@ -34,6 +35,7 @@ class CustomUserCreationForm(forms.ModelForm):
 
 class CustomUserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField(help_text='<a href="Password/">Change password</a>')
+
     class Meta:
         model = User
         fields = '__all__'
