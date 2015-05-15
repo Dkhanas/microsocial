@@ -1,7 +1,17 @@
-{% load static %}
+{% load static i18n%}
 <div >
 <img src="{% static 'microsocial/img/logo.png' %}">
-
-
-    </div>
+</div>
 Header
+<div class="navbar-btn" style="padding: 14px;">
+    <form action="{% url 'set_language' %}" method="post">
+        <input name="text" type="hidden" value="{{ redirect_to }}">
+        <input id="set_lang_code" name="language" type="hidden" value="">
+    </form>
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+        <a href="#" title="{{ language.name_local }}"
+           {% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}
+           onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">{{ language.code }}</a>
+    {% endfor %}
+</div>

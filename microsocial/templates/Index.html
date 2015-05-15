@@ -3,7 +3,7 @@
 <html>
 <head lang={{ LANGUAGE_CODE }}>
     <meta charset="UTF-8">
-    <title>{% block title %}test{% endblock %}</title>
+    <title>{% block title %}{{ DEFAULT_TITLE }}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'microsocial/img/favicon.ico' %}" type="image/x-icon">
     {% block css %}
         <link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
@@ -31,6 +31,7 @@
             <a href="{% url 'advertising_page' %}">advertisingz</a>
             <a href="{% url 'developers_page' %}">for developers</a>
             <a href="{% url 'vacancies_page' %}">vacancies</a>
+            <p>© Copiright {% now 'Y' %} </p>
 
             </div>
         </footer>
