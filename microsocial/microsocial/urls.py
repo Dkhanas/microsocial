@@ -6,6 +6,10 @@ from microsocial import views
 urlpatterns = [
     url(r'^$', views.main, name='main'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^registration/', views.registration, name='registration'),
+    url(r'^authorization/', views.authorization, name='authorization'),
+    url(r'^reset/', views.reset, name='reset'),
+    url(r'^reset_pass/', views.reset_pass, name='reset_pass'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 
 

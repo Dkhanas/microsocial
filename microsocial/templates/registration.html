@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'Index.html' %}
+{% load static i18n %}
+{% block title %}{% trans  'registration'|capfirst%}{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<div class="glyphicon-registration-mark">
+    <h1>{% trans 'registration'|capfirst %}</h1>
+    <form action="{% url 'registration' %}"
+        method="post" role="form" class="form-horizontal">
+       <ul>
+           <li><input value="{% trans  'name'|capfirst%}"></li>
+           <li><input type="email" value="{% trans  'email'|capfirst%}"></li>
+           <li><input value="{% trans  'password'|capfirst%}"></li>
+           <li><input value="{% trans  'password'|capfirst%}"></li>
+           <li><input type="submit" value="{% trans  'register'|capfirst%}"></li>
+       </ul>
+        <ul>
+            <li><a href="#" title="authorization">{% trans 'authorization'|capfirst %}</a> </li>
+        </ul>
+      {% csrf_token %}
+     </form>
+</div>
+{% endblock %}
+</div>

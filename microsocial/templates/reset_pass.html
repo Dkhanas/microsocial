@@ -1,0 +1,20 @@
+{% extends 'Index.html' %}
+{% load static i18n %}
+{% block title %}{% trans  'authorization'|capfirst%}{% endblock %}
+
+{% block content %}
+<div>
+    <h1>{% trans 'reset password'|capfirst %}</h1>
+    <form action="{% url 'reset_pass' %}"
+        method="post" role="form" class="form-horizontal">
+       <ul>
+           <li><input value="{% trans  'password'|capfirst%}"></li>
+           <li><input value="{% trans  'password'|capfirst%}"></li>
+           <li><input type="submit" value="{% trans  'save'|capfirst%}"></li>
+       </ul>
+      {% csrf_token %}
+     </form>
+</div>
+{% endblock %}
+</div>
+
