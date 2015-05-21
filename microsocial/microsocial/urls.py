@@ -1,21 +1,13 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.flatpages.views import flatpage
 from microsocial import views
 
 urlpatterns = [
     url(r'^$', views.main, name='main'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^registration/', views.registration, name='registration'),
-    url(r'^authorization/', views.authorization, name='authorization'),
-    url(r'^reset/', views.reset, name='reset'),
-    url(r'^reset_pass/', views.reset_pass, name='reset_pass'),
+    url(r'', include('auths.urls')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^profile/(?P<user_id>\d+)/$', views.ProfileView.as_view(), name='profile'),
 
-
-    url(r'^about/$', flatpage, {'url': '/about/'}, name='about_page'),
-    url(r'^help/$', flatpage, {'url': '/help/'}, name='help_page'),
-    url(r'^advertising/$', flatpage, {'url': '/advertising/'}, name='advertising_page'),
-    url(r'^developers/$', flatpage, {'url': '/developers/'}, name='developers_page'),
-    url(r'^vacancies/$', flatpage, {'url': '/vacancies/'}, name='vacancies_page'),
+    url(r'', include('django.contrib.flatpages.urls'))
 ]

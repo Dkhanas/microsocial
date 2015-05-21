@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n flatpages %}
 <!DOCTYPE html>
 <html>
 <head lang={{ LANGUAGE_CODE }}>
@@ -12,12 +12,12 @@
 </head>
 <body>
 <div class="container">
-<header>
-    {% block header %}
-      <div class="h6">  {% include 'header.html' %}</div>
-    {% endblock %}
-</header>
-</div>
+    <header>
+        {% block header %}
+          <div class="h6">  {% include 'header.html' %}</div>
+        {% endblock %}
+    </header>
+    </div>
     {% block content %}
         <div>
         {% trans 'Content' %}
@@ -25,14 +25,14 @@
     {% endblock %}
     {% block footer %}
         <footer class="base">
-        <div class="container">
-            <a href="{% url 'about_page' %}">{% trans 'about'|capfirst %}</a>
-            <a href="{% url 'help_page' %}">{% trans 'help'|capfirst %}</a>
-            <a href="{% url 'advertising_page' %}">{% trans 'advertisingz'|capfirst %}</a>
-            <a href="{% url 'developers_page' %}">{% trans 'for developers'|capfirst %}</a>
-            <a href="{% url 'vacancies_page' %}">{% trans 'vacancies'|capfirst %}</a>
-            <p>© Copiright {% now 'Y' %} </p>
-
+            <div class="container">
+                <p class="text-center margin flatpages">
+                    {% get_flatpages as flatepages %}
+                    {% for page in flatepages %}
+                        <a href="{{ page.url }}">{{ page.title }}</a>
+                    {% endfor %}
+                </p>
+                <p class="text-center text-muted margin">© Copiright {% now 'Y' %} </p>
             </div>
         </footer>
     {% endblock %}

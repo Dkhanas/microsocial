@@ -24,8 +24,11 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+INTERNAL_IPS = ('127.0.0.1',)
+
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -38,10 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'auths',
     'microsocial',
 )
 
-SITE_ID=1
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,7 +55,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -61,7 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     'django.contrib.messages.context_processors.messages',
-    #'microsocial.context_processors',
+    'microsocial.context_processors.main',
 )
 
 ROOT_URLCONF = 'microsocial.urls'
@@ -116,3 +122,6 @@ TEMPLATE_DIRS = (
 LOCATE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'profile'

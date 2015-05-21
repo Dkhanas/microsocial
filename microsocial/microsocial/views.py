@@ -1,17 +1,14 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from django.views.generic import TemplateView
 
 
+@login_required
 def main(request):
-    return render(request, 'Index.html')
+    return redirect('profile', user_id=request.user.pk, permanent=False)
 
-def registration(request):
-    return render(request, 'registration.html')
 
-def authorization(request):
-    return render(request, 'auth.html')
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
 
-def reset(request):
-    return render(request, 'reset.html')
 
-def reset_pass(request):
-    return render(request, 'reset_pass.html')

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 17:44+0300\n"
+"POT-Creation-Date: 2015-05-16 20:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,3 +93,52 @@ msgstr "для розробників"
 #: .\templates\Index.html:33
 msgid "vacancies"
 msgstr "вакансії"
+
+#: .\templates\auth.html:3 .\templates\auth.html.py:7
+#: .\templates\registration.html:18 .\templates\reset.html:3
+#: .\templates\reset.html.py:15 .\templates\reset_pass.html:3
+msgid "authorization"
+msgstr "авторизація"
+
+#: .\templates\auth.html:11 .\templates\registration.html:12
+#: .\templates\reset.html:11
+msgid "email"
+msgstr ""
+
+#: .\templates\auth.html:12 .\templates\registration.html:13
+#: .\templates\registration.html.py:14 .\templates\reset_pass.html:11
+#: .\templates\reset_pass.html.py:12
+#| msgid "Password"
+msgid "password"
+msgstr "пароль"
+
+#: .\templates\auth.html:13
+msgid "log in"
+msgstr "увійти"
+
+#: .\templates\auth.html:16 .\templates\reset.html:7
+#: .\templates\reset.html.py:12
+msgid "reset"
+msgstr "відновити"
+
+#: .\templates\auth.html:17 .\templates\registration.html:3
+#: .\templates\registration.html.py:7
+msgid "registration"
+msgstr "реєстрація"
+
+#: .\templates\registration.html:11
+msgid "name"
+msgstr "ім'я"
+#: .\templates\registration.html:15
+
+msgid "register"
+msgstr "зареєструвати"
+
+#: .\templates\reset_pass.html:7
+#| msgid "Password"
+msgid "reset password"
+msgstr "відновити пароль"
+
+#: .\templates\reset_pass.html:13
+msgid "save"
+msgstr "зберегти"

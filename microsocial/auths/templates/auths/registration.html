@@ -15,7 +15,7 @@
            <li><input type="submit" value="{% trans  'register'|capfirst%}"></li>
        </ul>
         <ul>
-            <li><a href="#" title="authorization">{% trans 'authorization'|capfirst %}</a> </li>
+            <li><a href="{% url 'login' %}" title="log in">{% trans 'log in'|capfirst %}</a> </li>
         </ul>
       {% csrf_token %}
      </form>

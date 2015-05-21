@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>{{ flatpage.title }}</title>
+{% extends 'Index.html' %}
+
+<head>
+<title>{% block title %}{{ flatpage.title }}|{{ block.super }} {% endblock %}</title>
 </head>
-<body>
-<p>{{ flatpage.content }}</p>
+<body>{% block content %}
+{{ flatpage.content }}{% endblock %}
 </body>
-</html>
