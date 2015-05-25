@@ -1,21 +1,9 @@
-{% extends 'Index.html' %}
-{% load static i18n %}
-{% block title %}{% trans  'authorization'|capfirst%}{% endblock %}
-
+{% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
-<div>
-    <h1>{% trans 'login'|capfirst %}</h1>
-    <form action="{% url 'login' %}"
-        method="post" role="form" class="form-horizontal">
-
-
-      {% csrf_token %}
-     </form>
+login
     <ul>
         <li><a href="{% url 'password_recovery' %}" title="password-recovery">{% trans 'password recovery'|capfirst %}</a> </li>
         <li><a href="{% url 'registration' %}" title="registration">{% trans 'registration'|capfirst %}</a> </li>
     </ul>
-</div>
 {% endblock %}
-</div>
-

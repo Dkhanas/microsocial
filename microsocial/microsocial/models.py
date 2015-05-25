@@ -1,8 +1,11 @@
 # coding=utf-8
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager, BaseUserManager
+from django.contrib.sites.models import Site
 from django.core.mail import send_mail
+from django.core.signing import Signer
+from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils import timezone
 
 
@@ -36,6 +39,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_('email'), unique=True)
     first_name = models.CharField(_('name'), max_length='30')
+
+    confirmed_registration = models.BooleanField(_('confirmed registration'), default=True)
     last_name = models.CharField(_('last_name'), blank=True, max_length='40')
     sex = models.SmallIntegerField(_('sex'), choices=SEX_CHOICES, blank=True, default=2)
     birth_date = models.DateField(_('birth date'), null=True, blank=True)
@@ -63,3 +68,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def send_registration_email(self):
+        url = 'http://{}{}'.format(
+            Site.objects.get_current().domain,
+            reverse('confirm_registration', kwargs={'token': Signer(salt='registration_confirm').sign(self.pk)})
+        )
+        self.email_user(
+            ugettext('Confirm registration on Microsocial'),
+            ugettext('For confirmation please visit: {}'.format(url)),
+        )

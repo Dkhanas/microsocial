@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for microsocial project.
 
@@ -10,6 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.utils.translation import ugettext_lazy as _
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -17,14 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'elaqovn(s($s1wr!j%5btv^_&zd&s((bz49(002=$47zfcm6(o'
+SECRET_KEY = '&=*&3xp!x_5rx59_l6-cho5a@ayt-czh4lh5r*o@r2*(dvuyyy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-
-INTERNAL_IPS = ('127.0.0.1',)
 
 ALLOWED_HOSTS = []
 
@@ -41,23 +42,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'users',
     'auths',
     'microsocial',
-)
-
-
-
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -69,6 +56,19 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'microsocial.context_processors.main',
 )
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+AUTH_USER_MODEL = 'users.User'
 
 ROOT_URLCONF = 'microsocial.urls'
 
@@ -87,18 +87,14 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
-from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
     ('en', _(u'English')),
-    ('ru', _(u'Russian')),
-    ('uk', _(u'Ukraine')),
-
+    ('ru', _(u'Руский')),
+    ('uk', _(u'Українська')),
 )
 
-LANGUAGE_CODE = 'en'
-
-SOLID_I18N_USE_REDIRECTS = True
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
@@ -108,7 +104,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'microsocial.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -119,9 +114,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
 
-LOCATE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-)
-
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'profile'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp', 'emails')
