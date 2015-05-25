@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.views import login, logout
 from django.core.signing import Signer, BadSignature
 from django.core.urlresolvers import reverse_lazy
 from django.http import Http404
@@ -11,7 +12,17 @@ from users.models import User
 
 
 def login_view(request):
-    return render(request, 'auths/login.html')
+    if request.user.is_authenticated():
+        return redirect('main')
+    response = login(request, 'auths/login.html')
+    if request.user.is_authenticated():
+        if 'remember_me' not in request.POST:
+            request.session.set_expiry(0)
+    return response
+
+
+def logout_view(request):
+    return logout(request, next_page='login')
 
 
 class RegistrationView(TemplateView):
@@ -57,6 +68,7 @@ class RegistrationConfirm(RedirectView):
         user.save(update_fields=('confirmed_registration',))
         messages.success(request, _('Successfully confirmed your registration. Can enter'))
         return super(RegistrationConfirm, self).dispatch(request, *args, **kwargs)
+
 
 class PasswordRecovery(TemplateView):
     template_name = "auths/password_recovery.html"
