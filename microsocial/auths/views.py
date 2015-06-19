@@ -6,7 +6,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView, RedirectView
-from auths.forms import RegistrationForm
+from auths.forms import RegistrationForm, LoginForm
 from microsocial import settings
 from users.models import User
 
@@ -14,11 +14,7 @@ from users.models import User
 def login_view(request):
     if request.user.is_authenticated():
         return redirect('main')
-    response = login(request, 'auths/login.html')
-    if request.user.is_authenticated():
-        if 'remember_me' not in request.POST:
-            request.session.set_expiry(0)
-    return response
+    return login(request, 'auths/login.html', authentication_form=LoginForm)
 
 
 def logout_view(request):

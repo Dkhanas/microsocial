@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load i18n users humanize microsocial%}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-3">
+            <div style="margin-top: 20px;">
+                <img class="img-responsive" src="{{ profile_user|get_avatar }}">
+            </div>
+            <div class="text-center" style="margin-top: 10px;">
+                {% if profile_user == user %}
+                    <a href="{% url 'settings' %}">{% trans 'settings'|capfirst %}</a>
+                {% else %}
+                   {% if is_my_friend %}
+                       <form action="{% url 'friendship_api' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="delete_from_friends">
+                            <input type="hidden" name="user_id" value="{{ profile_user.pk }}">
+                            <input type="hidden" name="next" value="{{ request.get_full_path}}">
+                            <input type="submit" class="btn btn-danger"
+                                   value="{% trans 'видалити з друзів'|capfirst %}">
+                       </form>
+                   {% else %}
+                       <form action="{% url 'friendship_api' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="add_to_friends">
+                            <input type="hidden" name="user_id" value="{{ profile_user.pk }}">
+                            <input type="hidden" name="next" value="{{ request.get_full_path}}">
+                            <input type="submit" class="btn btn-success"
+                                   value="{% trans 'додати в друзі'|capfirst %}">
+                       </form>
+                   {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <h1>{{ profile_user.get_full_name }}</h1>
+            <table class="table borderless">
+                <tbody>
+                    {% if profile_user.sex %}
+                        <tr>
+                            <td>{% trans 'sex'|capfirst %}:</td>
+                            <td>{{ profile_user.get_sex_display }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if profile_user.birth_date %}
+                        <tr>
+                            <td>{% trans 'birth data'|capfirst %}:</td>
+                            <td>{{ profile_user.birth_date }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if profile_user.city %}
+                        <tr>
+                            <td>{% trans 'city'|capfirst %}:</td>
+                            <td>{{ profile_user.city }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if profile_user.job %}
+                        <tr>
+                            <td>{% trans 'job'|capfirst %}:</td>
+                            <td>{{ profile_user.job }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if profile_user.about_me %}
+                        <tr>
+                            <td>{% trans 'about me'|capfirst %}:</td>
+                            <td>{{ profile_user.about_me|linebreaksbr }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if profile_user.interests %}
+                        <tr>
+                            <td>{% trans 'interests'|capfirst %}:</td>
+                            <td>{{ profile_user.interests|linebreaksbr }}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <form class="form" method="post">
+                {% csrf_token %}
+                {% show_form_field_error wall_post_form.content.errors %}
+                <div class="form-group{% if wall_post_form.content.errors %} has-error{% endif %}">
+                    {{ wall_post_form.content }}
+                </div>
+                <input type="submit" class="btn btn-primary" value="{% trans 'post'|capfirst %}">
+            </form>
+            {% for wall_post in wall_posts %}
+                <div style="margin-top: 20px; border: 1px; solid #666; padding: 10px;">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img class="img-responsive" src="{{ wall_post.author|get_avatar }}">
+                        </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <a href="{% url 'user_profile' wall_post.author_id %}">
+                                    {{ wall_posts.author.get_full_name }}
+                                </a>
+                                <span title="{{ wall_post.created }}" style="margin-left: 20px;">
+                                    {{ wall_post.created|naturaltime }}
+                                </span>
+                            </div>
+                            <div style="margin-top: 12px;">
+                                {{ wall_post.content|linebreaksbr }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% show_paginator wall_posts %}
+        </div>
+    </div>
+{% endblock %}
