@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Q
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from microsocial import settings
 
 
@@ -44,3 +46,9 @@ class Message(models.Model):
 
     def __unicode__(self):
         return 'Message #{}'.format(self.pk)
+
+
+@receiver(post_save, sender=Message)
+def update_last_message(sender, instance, **kwargs):
+    instance.dialog.last_message = instance
+    instance.dialog.save(update_fields=('last_message',))
