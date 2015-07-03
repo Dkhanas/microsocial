@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'auths',
     'microsocial',
     'dialogs',
+    'news',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

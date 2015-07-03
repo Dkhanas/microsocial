@@ -1,5 +1,5 @@
 # coding=utf-8
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
 from django.core.signing import Signer, TimestampSigner
@@ -12,7 +12,7 @@ from django.utils.crypto import get_random_string
 import os
 from django.db.models import Q
 import datetime
-
+from django.dispatch import Signal
 
 def get_ids_from_users(*users):
     return [user.pk if isinstance(user, User) else int(user) for user in users]
@@ -57,6 +57,7 @@ class UserFriendShipManager(models.Manager):
             FriendInvite.objects.filter(
                 Q(from_user_id=user1_id, to_user_id=user2_id) | Q(from_user_id=user2_id, to_user_id=user1_id)
             ).delete()
+            make_friends.send(self.model, user1_id=user1_id, user2_id=user2_id)
             return True
 
     def delete(self, user1, user2):
@@ -66,6 +67,7 @@ class UserFriendShipManager(models.Manager):
             through_model.objects.filter(
                 Q(from_user_id=user1_id, to_user_id=user2_id) | Q(from_user_id=user2_id, to_user_id=user1_id)
             ).delete()
+            break_friends.send(self.model, user1_id=user1_id, user2_id=user2_id)
             return True
 
 
@@ -203,3 +205,6 @@ class UserWallPost(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+make_friends = Signal(providing_args=['user1_id', 'user2_id'])
+break_friends = Signal(providing_args=['user1_id', 'user2_id'])

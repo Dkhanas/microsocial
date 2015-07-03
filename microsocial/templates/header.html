@@ -7,7 +7,7 @@
     <div class="col-xs-6">
         {% if user.is_authenticated %}
             <p style="margin-top: 20px; font-size: 16px;">
-                <a href="#" style="margin-right: 10px;">{% trans 'новини'|capfirst %}</a>
+                <a href="{% url 'news' %}" style="margin-right: 10px;">{% trans 'новини'|capfirst %}</a>
                 <a href="{% url 'user_profile' user.pk %}" style="margin-right: 10px;">{% trans 'мій профіль'|capfirst %}</a>
                 <a href="{% url 'friends' %}" style="margin-right: 10px;">{% trans 'друзі'|capfirst %}</a>
                 <a href="{% url 'messages' %}" style="margin-right: 10px;">{% trans 'повідомлення'|capfirst %}</a>
