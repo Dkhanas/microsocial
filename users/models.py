@@ -1,7 +1,7 @@
 # coding=utf-8
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.sites.models import Site
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.signing import Signer, TimestampSigner
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -13,6 +13,10 @@ import os
 from django.db.models import Q
 import datetime
 from django.dispatch import Signal
+from django.template.loader import get_template
+from django.template import Context
+from django.shortcuts import render
+
 
 def get_ids_from_users(*users):
     return [user.pk if isinstance(user, User) else int(user) for user in users]
@@ -127,15 +131,38 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    # def send_registration_email(self):
+    #     url = 'http://{}{}'.format(
+    #         Site.objects.get_current().domain,
+    #         reverse('registration_confirm', kwargs={'token': Signer(salt='registration-confirm').sign(self.pk)})
+    #     )
+    #     self.email_user(
+    #         ugettext('Confirm registration on Microsocial'),
+    #         ugettext('For confirmation please visit: {}'.format(url)),
+    #     )
+
     def send_registration_email(self):
         url = 'http://{}{}'.format(
             Site.objects.get_current().domain,
             reverse('registration_confirm', kwargs={'token': Signer(salt='registration-confirm').sign(self.pk)})
         )
-        self.email_user(
-            ugettext('Confirm registration on Microsocial'),
-            ugettext('For confirmation please visit: {}'.format(url)),
-        )
+        subject = ugettext('Confirm registration on Microsocial')
+        from_email = None
+        to = [self.email]
+        htmlemail = get_template("users/email_confirm_registration_template.html")
+        textemail = get_template("users/email_confirm_registration_template.txt")
+        context = Context({"url":url})
+        text_content = textemail.render(context)
+        html_content = htmlemail.render(context)
+        msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+        #
+        # self.email_user(
+        #     ugettext('Confirm registration on Microsocial'),
+        #     ugettext('For confirmation please visit: {}'.format(url)),
+        # )
+
 
     def get_last_login_hash(self):
         return hashlib.md5(self.last_login.strftime('%Y-%m-%d-%H-%M-%S-%f')).hexdigest()[:8]
