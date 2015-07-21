@@ -149,8 +149,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         subject = ugettext('Confirm registration on Microsocial')
         from_email = None
         to = [self.email]
-        htmlemail = get_template("users/email_confirm_registration_template.html")
-        textemail = get_template("users/email_confirm_registration_template.txt")
+        htmlemail = get_template("users/email_template/email_confirm_registration_template.html")
+        textemail = get_template("users/email_template/email_confirm_registration_template.txt")
         context = Context({"url":url})
         text_content = textemail.render(context)
         html_content = htmlemail.render(context)
@@ -174,10 +174,21 @@ class User(AbstractBaseUser, PermissionsMixin):
             Site.objects.get_current().domain,
             reverse('password_recovery_confirm', kwargs={'token': token})
         )
-        self.email_user(
-            ugettext('Confirm password recovery on Microsocial'),
-            ugettext('For confirmation please visit: {}'.format(url)),
-        )
+        subject = ugettext('Confirm password recovery on Microsocial')
+        from_email = None
+        to = [self.email]
+        htmlemail = get_template("users/email_template/email_confirm_registration_template.html")
+        textemail = get_template("users/email_template/email_confirm_registration_template.txt")
+        context = Context({"url":url})
+        text_content = textemail.render(context)
+        html_content = htmlemail.render(context)
+        msg = EmailMultiAlternatives(subject, text_content, from_email, to)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
+        # self.email_user(
+        #     ugettext('Confirm password recovery on Microsocial'),
+        #     ugettext('For confirmation please visit: {}'.format(url)),
+        # )
 
     def get_age(self):
         if self.birth_date:
