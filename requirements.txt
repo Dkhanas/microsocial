@@ -8,7 +8,7 @@ uwsgi==2.0.10
 dj-database-url==0.3.0
 dj-static==0.0.6
 gunicorn==19.1.0
-herocu==0.1.4
+heroku==0.1.4
 static==0.4
 whitenoise==1.0.3
 wsgiref==0.1.2
