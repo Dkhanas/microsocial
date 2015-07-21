@@ -23,13 +23,39 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '&=*&3xp!x_5rx59_l6-cho5a@ayt-czh4lh5r*o@r2*(dvuyyy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 APPEND_SLASH = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+if DEBUG is True:
+    DB_SERVER = 'localhost'
+    DB_PORT = 27017
+    DB_NAME_DEFAULT = 'Database_Name'
+    DB_CREDENTIALS = {}
+else:
+    DB_SERVER = 'ds012345.mongolab.com'
+    DB_PORT = 53972
+    DB_NAME_DEFAULT = 'heroku_123456'
+    DB_CREDENTIALS = {
+        'user': "db_user",
+        'password': "some_password"
+    }
 
 SITE_ID = 1
 
@@ -116,6 +142,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = (os.path.join(BASE_DIR, 'static'))
+
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
@@ -131,3 +159,5 @@ SESSION_COOKIE_AGE = 360
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)

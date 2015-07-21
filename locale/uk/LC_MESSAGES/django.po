@@ -1,0 +1,576 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-21 10:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: auths/forms.py:11
+msgid "пароль"
+msgstr ""
+
+#: auths/forms.py:12
+msgid "повтор паролю"
+msgstr ""
+
+#: auths/forms.py:26
+#, fuzzy
+#| msgid "Password confirmation"
+msgid "Passwords do not match"
+msgstr "Підтвердити пароль"
+
+#: auths/forms.py:31
+msgid "User with that email already exist."
+msgstr ""
+
+#: auths/forms.py:56
+msgid "Incorrect email or password"
+msgstr ""
+
+#: auths/forms.py:71
+msgid "User does not exist"
+msgstr ""
+
+#: auths/templates/auths/login.html:6
+#, fuzzy
+#| msgid "authorization"
+msgid "authentication"
+msgstr "авторизація"
+
+#: auths/templates/auths/login.html:22
+#: auths/templates/auths/password_recovery.html:35
+#: auths/templates/auths/password_recovery.html:42
+#: auths/templates/auths/password_recovery_form.html:29
+#: auths/templates/auths/registration.html:40
+msgid "login"
+msgstr ""
+
+#: auths/templates/auths/login.html:28
+#: auths/templates/auths/password_recovery.html:6
+#, fuzzy
+#| msgid "password"
+msgid "password recovery"
+msgstr "пароль"
+
+#: auths/templates/auths/login.html:29
+#: auths/templates/auths/registration.html:18
+msgid "registration"
+msgstr "реєстрація"
+
+#: auths/templates/auths/password_recovery.html:9
+#, python-format
+msgid "Confirm recovery password via a link sent to Your email %(e)s."
+msgstr ""
+
+#: auths/templates/auths/password_recovery.html:29
+#, fuzzy
+#| msgid "reset password"
+msgid "recovery password"
+msgstr "відновити пароль"
+
+#: auths/templates/auths/password_recovery_form.html:6
+#, fuzzy
+#| msgid "password"
+msgid "new password"
+msgstr "пароль"
+
+#: auths/templates/auths/password_recovery_form.html:22
+#: users/templates/users/settings.html:40
+msgid "save"
+msgstr "зберегти"
+
+#: auths/templates/auths/registration.html:8
+#, python-format
+msgid "Thank you for signing %(u)s!"
+msgstr ""
+
+#: auths/templates/auths/registration.html:13
+#, python-format
+msgid "Confirm registration via a link sent to Your email %(e)s."
+msgstr ""
+
+#: auths/templates/auths/registration.html:34
+msgid "register"
+msgstr "зареєструвати"
+
+#: auths/views.py:62
+msgid "Successfully confirmed your registration. Can enter"
+msgstr ""
+
+#: dialogs/forms.py:13
+msgid "введіть повідомлення"
+msgstr ""
+
+#: dialogs/templates/dialogs/dialog.html:7
+msgid "Повідомлення"
+msgstr ""
+
+#: dialogs/templates/dialogs/dialog.html:24
+msgid "діалог з "
+msgstr ""
+
+#: dialogs/templates/dialogs/dialog.html:37
+msgid "відправити"
+msgstr ""
+
+#: microsocial/settings.py:99
+msgid "English"
+msgstr ""
+
+#: microsocial/settings.py:100
+msgid "Руский"
+msgstr ""
+
+#: microsocial/settings.py:101
+msgid "Українська"
+msgstr ""
+
+#: microsocial/templates/Index.html:24 microsocial/templates/base.html:24
+msgid "Content"
+msgstr "Контент"
+
+#: microsocial/templates/header.html:10 news/templates/news/news.html:5
+msgid "новини"
+msgstr ""
+
+#: microsocial/templates/header.html:11
+msgid "мій профіль"
+msgstr ""
+
+#: microsocial/templates/header.html:12 users/models.py:116
+#: users/templates/users/friends_base.html:9
+#: users/templates/users/friends_friends.html:5
+msgid "друзі"
+msgstr ""
+
+#: microsocial/templates/header.html:13
+msgid "повідомлення"
+msgstr ""
+
+#: microsocial/templates/header.html:14
+msgid "пошук"
+msgstr ""
+
+#: microsocial/templates/header.html:34
+msgid "logout"
+msgstr ""
+
+#: microsocial/templates/microsocial/tags/paginator.html:7
+msgid "new"
+msgstr ""
+
+#: microsocial/templates/microsocial/tags/paginator.html:15
+msgid "old"
+msgstr ""
+
+#: news/models.py:24
+msgid "повідомлення на стіні"
+msgstr ""
+
+#: news/models.py:25 news/templates/news/display_make_friends.html:9
+msgid "тепер друзі"
+msgstr ""
+
+#: news/models.py:26 news/templates/news/display_break_friends.html:9
+msgid "розірвали дружбу"
+msgstr ""
+
+#: news/templates/news/display_break_friends.html:5
+#: news/templates/news/display_make_friends.html:5
+msgid "і"
+msgstr ""
+
+#: news/templates/news/display_wall_post.html:5
+msgid "зробив запис на своїй стіні"
+msgstr ""
+
+#: news/templates/news/display_wall_post.html:7
+msgid "зробив запис на стіні"
+msgstr ""
+
+#: users/forms.py:18
+msgid "Enter birth date in format YYYY-MM-DD"
+msgstr ""
+
+#: users/forms.py:33
+msgid "New email"
+msgstr ""
+
+#: users/forms.py:34
+msgid "Password"
+msgstr "Пароль"
+
+#: users/forms.py:44
+msgid "User with this email already exist"
+msgstr ""
+
+#: users/forms.py:50
+#, fuzzy
+#| msgid "reset password"
+msgid "Incorrect password."
+msgstr "відновити пароль"
+
+#: users/forms.py:65
+msgid "write on the wall..."
+msgstr ""
+
+#: users/forms.py:77
+msgid "Імя Фамілія"
+msgstr ""
+
+#: users/forms.py:78
+msgid "Стать"
+msgstr ""
+
+#: users/forms.py:79
+msgid "Усі"
+msgstr ""
+
+#: users/forms.py:81
+msgid "Рік народження від"
+msgstr ""
+
+#: users/forms.py:82
+msgid "від"
+msgstr ""
+
+#: users/forms.py:83
+msgid "Рік народження до"
+msgstr ""
+
+#: users/forms.py:84
+msgid "до"
+msgstr ""
+
+#: users/forms.py:85
+msgid "Місто"
+msgstr ""
+
+#: users/forms.py:86
+msgid "Робота"
+msgstr ""
+
+#: users/forms.py:87
+msgid "Про мене"
+msgstr ""
+
+#: users/forms.py:88
+msgid "Інтереси"
+msgstr ""
+
+#: users/models.py:54 users/models.py:196
+msgid "Неможна самого себе додати в друзі"
+msgstr ""
+
+#: users/models.py:93
+msgid "------"
+msgstr ""
+
+#: users/models.py:94
+msgid "чоловіча"
+msgstr ""
+
+#: users/models.py:95
+msgid "жіноча"
+msgstr ""
+
+#: users/models.py:99
+msgid "first name"
+msgstr ""
+
+#: users/models.py:100
+#, fuzzy
+#| msgid "name"
+msgid "last name"
+msgstr "ім'я"
+
+#: users/models.py:101
+#, fuzzy
+#| msgid "registration"
+msgid "confirmed registration "
+msgstr "реєстрація"
+
+#: users/models.py:102
+msgid "avatar"
+msgstr ""
+
+#: users/models.py:103
+msgid "staff status"
+msgstr "Статус персоналу"
+
+#: users/models.py:104
+msgid "Designates whether the user can log into this admin site."
+msgstr "Визначає, чи може користувач увійти в цей адміністратора сайту."
+
+#: users/models.py:106
+msgid "active"
+msgstr "Активний"
+
+#: users/models.py:107
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+"Позначає це користувач повинен розглядатися як активний. Скасуйте цейЗамість "
+"видалення облікових записів."
+
+#: users/models.py:109
+msgid "date joined"
+msgstr ""
+
+#: users/models.py:110
+msgid "стать"
+msgstr ""
+
+#: users/models.py:111
+msgid "дата народження"
+msgstr ""
+
+#: users/models.py:112
+msgid "місто"
+msgstr ""
+
+#: users/models.py:113
+msgid "місце роботи"
+msgstr ""
+
+#: users/models.py:114
+msgid "про себе"
+msgstr ""
+
+#: users/models.py:115
+msgid "інтереси"
+msgstr ""
+
+#: users/models.py:149
+msgid "Confirm registration on Microsocial"
+msgstr ""
+
+#: users/models.py:171
+msgid "Confirm password recovery on Microsocial"
+msgstr ""
+
+#: users/models.py:198
+msgid "Ви вже друзі"
+msgstr ""
+
+#: users/models.py:200
+msgid "Заявка вже створена і очікую розшляду"
+msgstr ""
+
+#: users/models.py:210
+msgid "Заявки не існує"
+msgstr ""
+
+#: users/models.py:229
+msgid "власник стіни"
+msgstr ""
+
+#: users/models.py:230
+#, fuzzy
+#| msgid "authorization"
+msgid "author"
+msgstr "авторизація"
+
+#: users/models.py:231
+msgid "text"
+msgstr ""
+
+#: users/models.py:232
+msgid "date"
+msgstr ""
+
+#: users/templates/users/email_template/email_confirm_recovery_password_template.html:3
+#: users/templates/users/email_template/email_confirm_registration_template.html:3
+#, python-format
+msgid ""
+" For confirmation please visit: <a href=\"%(url)s\"><input type=\"button\" "
+"value=\"Перейти\"></a>"
+msgstr ""
+
+#: users/templates/users/friends_base.html:12
+#: users/templates/users/friends_incoming.html:5
+msgid "вхідні заявки"
+msgstr ""
+
+#: users/templates/users/friends_base.html:15
+#: users/templates/users/friends_outcoming.html:5
+msgid "вихідні заявки"
+msgstr ""
+
+#: users/templates/users/friends_friends.html:22
+#: users/templates/users/profile.html:21
+msgid "видалити з друзів"
+msgstr ""
+
+#: users/templates/users/friends_friends.html:26
+#: users/templates/users/profile.html:35
+msgid "написати повідомлення"
+msgstr ""
+
+#: users/templates/users/friends_incoming.html:22
+msgid "підтвердити"
+msgstr ""
+
+#: users/templates/users/friends_incoming.html:30
+msgid "відхилити"
+msgstr ""
+
+#: users/templates/users/friends_outcoming.html:22
+msgid "відмінити"
+msgstr ""
+
+#: users/templates/users/profile.html:12
+msgid "settings"
+msgstr ""
+
+#: users/templates/users/profile.html:30
+msgid "додати в друзі"
+msgstr ""
+
+#: users/templates/users/profile.html:47
+msgid "sex"
+msgstr ""
+
+#: users/templates/users/profile.html:53
+msgid "birth data"
+msgstr ""
+
+#: users/templates/users/profile.html:59
+msgid "city"
+msgstr ""
+
+#: users/templates/users/profile.html:65
+msgid "job"
+msgstr ""
+
+#: users/templates/users/profile.html:71
+#, fuzzy
+#| msgid "about"
+msgid "about me"
+msgstr "про"
+
+#: users/templates/users/profile.html:77
+msgid "interests"
+msgstr ""
+
+#: users/templates/users/profile.html:89
+msgid "post"
+msgstr ""
+
+#: users/templates/users/search.html:4
+msgid "пошук людей"
+msgstr ""
+
+#: users/templates/users/search.html:69
+msgid "шукати"
+msgstr ""
+
+#: users/templates/users/search.html:86
+#, python-format
+msgid "%(age)s"
+msgstr ""
+
+#: users/templates/users/settings.html:14
+msgid "delete"
+msgstr ""
+
+#: users/templates/users/settings.html:18
+msgid "You have not avatar"
+msgstr ""
+
+#: users/templates/users/settings.html:53
+#: users/templates/users/settings.html:69
+#, fuzzy
+#| msgid "password"
+msgid "change password"
+msgstr "пароль"
+
+#: users/templates/users/settings.html:82
+#: users/templates/users/settings.html:106
+msgid "change email"
+msgstr ""
+
+#: users/templates/users/settings.html:87
+msgid "yours email"
+msgstr ""
+
+#: users/views.py:55
+msgid "Message success posted"
+msgstr ""
+
+#: users/views.py:87
+msgid "Profile success update."
+msgstr ""
+
+#: users/views.py:93
+msgid "Password success update."
+msgstr ""
+
+#: users/views.py:97
+msgid "Email success update."
+msgstr ""
+
+#: users/views.py:193
+msgid "Заявка успішно відправлена і очікує розляду"
+msgstr ""
+
+#: users/views.py:195
+msgid "Користувач успішно добавлений в друзі"
+msgstr ""
+
+#: users/views.py:208
+msgid "Заявка успішно підтрерджена. Користувач доданий в друзі"
+msgstr ""
+
+#: users/views.py:215
+msgid "Заявка успішно відмолено"
+msgstr ""
+
+#: users/views.py:222
+msgid "Заявку успішно видалено"
+msgstr ""
+
+#: users/views.py:229
+msgid "Користувача успішно видалено з друзів."
+msgstr ""
+
+#~ msgid "Personal info"
+#~ msgstr "Персональна Інформація"
+
+#~ msgid "Permissions"
+#~ msgstr "Дозволи"
+
+#~ msgid "Enter the same password as above, for verification."
+#~ msgstr "Введіть той же пароль, як зазначено вище, для перевірки."
+
+#~ msgid "help"
+#~ msgstr "допомога"
+
+#~ msgid "advertisingz"
+#~ msgstr "реклама"
+
+#~ msgid "for developers"
+#~ msgstr "для розробників"
+
+#~ msgid "vacancies"
+#~ msgstr "вакансії"
+
+#~ msgid "log in"
+#~ msgstr "увійти"
+
+#~ msgid "reset"
+#~ msgstr "відновити"

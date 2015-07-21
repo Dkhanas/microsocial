@@ -157,12 +157,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         msg = EmailMultiAlternatives(subject, text_content, from_email, to)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        #
-        # self.email_user(
-        #     ugettext('Confirm registration on Microsocial'),
-        #     ugettext('For confirmation please visit: {}'.format(url)),
-        # )
-
 
     def get_last_login_hash(self):
         return hashlib.md5(self.last_login.strftime('%Y-%m-%d-%H-%M-%S-%f')).hexdigest()[:8]
@@ -185,10 +179,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         msg = EmailMultiAlternatives(subject, text_content, from_email, to)
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        # self.email_user(
-        #     ugettext('Confirm password recovery on Microsocial'),
-        #     ugettext('For confirmation please visit: {}'.format(url)),
-        # )
 
     def get_age(self):
         if self.birth_date:
