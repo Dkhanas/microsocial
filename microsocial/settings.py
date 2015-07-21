@@ -49,12 +49,12 @@ if DEBUG is True:
     DB_NAME_DEFAULT = 'Database_Name'
     DB_CREDENTIALS = {}
 else:
-    DB_SERVER = 'ds012345.mongolab.com'
-    DB_PORT = 53972
-    DB_NAME_DEFAULT = 'heroku_123456'
+    DB_SERVER = 'ec2-54-217-202-108.eu-west-1.compute.amazonaws.com'
+    DB_PORT = 5432
+    DB_NAME_DEFAULT = 'd10dv553v7pabm'
     DB_CREDENTIALS = {
-        'user': "db_user",
-        'password': "some_password"
+        'user': "caellxbvawcmbb",
+        'password': "d9XokyolCGQTZCaeBNtQxwkgUm"
     }
 
 SITE_ID = 1
