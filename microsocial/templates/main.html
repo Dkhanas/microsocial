@@ -1,0 +1,239 @@
+{% load static flatpages i18n microsocial%}
+<!DOCTYPE html>
+<html lang="en">
+  <head lang={{ LANGUAGE_CODE }}>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}{{ DEFAULT_TITLE }}{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,900italic,900,700italic,700,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <!-- Magnific Popup -->
+    <link href="style/magnific-popup.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="style/select2.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="style/main-style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    <div class="page page_landing">
+
+      <div class="header header_landing content">
+          <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="logo logo_landing">
+                      <a href="#" class="logo__item">
+                          Logo
+                      </a>
+                    </div>
+                    <div class="slogan">
+                        <p class="slogan__item slogan__item_title">We Create!</p>
+                        <p class="slogan__item">
+                            Share videos privately with friends and family, or with the whole world, on computers, phones, tablets, and TVs
+                        </p>
+                    </div>
+                    <a href='#overlay-sign-up' data-effect="mfp-zoom-in" class="sign-up open-overlay">
+                        <span class="sign-up__item sign-up__item_mod">New User?</span>
+                        <span class="sign-up__item">Sign Up!</span>
+                    </a>
+                    <div class="sign-in">
+                        <a class="sign-in__item open-overlay" href="#overlay-sign-in">Already a member? Sign in</a>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                    <div class="video video_mod">
+                        <div class="video__item">
+                          <iframe src="https://player.vimeo.com/video/135798920"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="footer-wrap  footer-wrap_pos">
+          <div class="container">
+              <div class="row footer footer_mod">
+                <div class="left-copyright col-lg-3 col-md-3 col-sm-4 col-xs-12 text-left">
+                    <a class="left-copyright__item left-copyright__item_landing" href="http://seclgroup.com/" target="_blank">Created by: </a>
+                    <a class="left-copyright__item left-copyright__item_landing" href="http://seclgroup.com/" target="_blank">SECL Group</a>
+                </div>                
+                <ul class="footer-menu col-lg-6 col-md-6 col-sm-3 col-xs-12">
+                    <li class="footer-menu__item footer-menu__item_landing">
+                        <a href="aboutUs.html">About us</a>
+                    </li>
+                    <li class="footer-menu__item footer-menu__item_landing">
+                        <a href="contact.html">Contact us</a>
+                    </li>
+                    <li class="footer-menu__item footer-menu__item_landing">
+                        <a href="#">Terms & conditions</a>
+                    </li>
+                </ul>
+                <div class="right-copyright col-lg-3 col-md-3 col-sm-5 col-xs-12 text-right">
+                    <div class="right-copyright__item right-copyright__item_landing">© All right are reserved to borebo 2015</div>
+                </div>
+              </div>  
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overlays -->
+
+    <!-- Sign Up -->
+
+    <div class="overlay-wrap mfp-hide" id="overlay-sign-up">
+
+      <div class="container">
+        <div class="row">
+          <div class="overlay col-lg-12 ">
+            <h2>Sign Up to Borebo</h2>
+            <form data-toggle="validator" role="form">
+              <div class="form-group">
+                <label for="firstName" class="control-label">First name: </label>
+                <input type="text" class="form-control" id="firstName" required >
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="control-label">Last name: </label>
+                <input type="text" class="form-control" id="lastName" required >
+              </div>
+              <div class="form-group">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword" class="control-label">Password (6 or more charackters): </label>                
+                <input type="password" data-minlength="6" class="form-control" id="inputPassword" required data-error="Password must be minimum 6 charackters">
+                <div class="help-block with-errors"></div>                
+              </div>           
+              <div class="form-group">
+                <p>By clicking Join now, you agree to <a href="#">Privacy Policy</a></p>
+                <button type="submit" class="btn btn-primary">Join Now</button>
+                <p>Already a member? <a href="#overlay-sign-in" class="open-overlay">Sign in</a></p>
+              </div>            
+            </form>
+            <div class="social-sign">
+                <div class="row">
+                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p>Sign in with:</p>
+                  </div>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <ul class="social-sign-in text-left">
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                  </ul>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <!-- Sign In -->
+
+      <div class="overlay-wrap mfp-hide" id="overlay-sign-in">
+
+      <div class="container">
+        <div class="row">
+          <div class="overlay col-lg-12 ">
+            <h2>Sign In to Borebo</h2>
+            <form data-toggle="validator" role="form">
+              <div class="form-group">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword" class="control-label">Password: </label>                
+                <input type="password" data-minlength="6" class="form-control" id="inputPassword"  required data-error="Wrong password">
+                <div class="help-block with-errors"></div>                
+              </div>           
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                <p><a href="#overlay-request" class="open-overlay">Forgot password?</a></p>
+                <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
+              </div>            
+            </form>
+            <div class="social-sign">
+                <div class="row">
+                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p>Sign in with:</p>
+                  </div>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <ul class="social-sign-in text-left">
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                  </ul>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <!-- Request a Password Change -->
+
+    <div class="overlay-wrap mfp-hide" id="overlay-request">
+
+      <div class="container">
+        <div class="row">
+          <div class="overlay col-lg-12 ">
+            <h2>Request a Password Change</h2>
+            <form data-toggle="validator" role="form">
+              <div class="form-group">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
+                <div class="help-block with-errors"></div>
+              </div>          
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Continue</button>
+              </div>            
+            </form>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="js/magnific-popup.min.js"></script>
+    <!-- Validator -->
+    <script src="js/validator.min.js"></script>
+    <!-- Select2 -->
+    <script src="js/select2.full.min.js"></script>
+    <!-- Google place API -->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
+    <!-- Control google API -->
+    <script src="js/adresses.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/custom-scripts.js"></script>
+  </body>
+</html>

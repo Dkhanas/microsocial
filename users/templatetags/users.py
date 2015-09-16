@@ -8,4 +8,4 @@ def get_avatar(user):
     try:
         return user.avatar.url
     except ValueError:
-        return '{}users/img/empty_avatar.jpg'.format(settings.STATIC_URL)
+        return '{}users/images/default/default_avatar.png'.format(settings.STATIC_URL)

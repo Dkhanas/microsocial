@@ -144,7 +144,7 @@ class UserIncomingView(TemplateView):
 
 
 class UserOutcomingView(TemplateView):
-    template_name = 'users/friends_Outcoming.html'
+    template_name = 'users/friends_outcoming.html'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
