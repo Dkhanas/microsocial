@@ -34,7 +34,7 @@
                         {{ form.text }}
                     </div>
                     <div class="col-xs-3">
-                        <input type="submit" class="btn btn-primary" value="{% trans 'відправити'|capfirst %}">
+                      {% if dialog_opponent != opponent %}  <input type="submit" class="btn btn-primary" value="{% trans 'відправити'|capfirst %}">{%  endif %}
                     </div>
                 </div>
             </form>
