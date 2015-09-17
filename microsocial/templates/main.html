@@ -1,3 +1,4 @@
+
 {% load static flatpages i18n microsocial%}
 <!DOCTYPE html>
 <html lang="en">
@@ -5,22 +6,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{% block title %}{{ DEFAULT_TITLE }}{% endblock %}</title>
-
-    <!-- Fonts -->
+    <link rel="shortcut icon" href="{% static 'microsocial/images/favicon.ico' %}" type="image/x-icon">
+    {% block css %}
+          <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,900italic,900,700italic,700,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "microsocial/style/font-awesome.min.css" %}">
     <!-- Bootstrap -->
-    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static "microsocial/style/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Magnific Popup -->
-    <link href="style/magnific-popup.css" rel="stylesheet">
+    <link href="{% static "microsocial/style/magnific-popup.css" %}" rel="stylesheet">
     <!-- Select2 -->
-    <link href="style/select2.min.css" rel="stylesheet">
+    <link href="{% static "microsocial/style/select2.min.css" %}" rel="stylesheet">
     <!-- Custom styles -->
-    <link href="style/main-style.css" rel="stylesheet">
+    <link href="{% static "microsocial/style/main-style.css" %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +28,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+
+    {% endblock %}
+</head>
   <body>
     
     <div class="page page_landing">
@@ -158,22 +160,25 @@
         <div class="row">
           <div class="overlay col-lg-12 ">
             <h2>Sign In to Borebo</h2>
-            <form data-toggle="validator" role="form">
-              <div class="form-group">
-                <label for="inputEmail" class="control-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
-                <div class="help-block with-errors"></div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword" class="control-label">Password: </label>                
-                <input type="password" data-minlength="6" class="form-control" id="inputPassword"  required data-error="Wrong password">
-                <div class="help-block with-errors"></div>                
-              </div>           
-              <div class="form-group">
+            <form data-toggle="validator" role="form" method="post">
+            {% csrf_token %}
+            {% show_form_errors form 'col-sm-offset-4 col-sm-8' %}
+            {% for field in form %}
+                <div class="form-group {% if form.errors %} has-error {% endif %}">
+                    <label for="{{ field.id_for_label }}" class="control-label">
+                        {{ field.label|capfirst }}:
+                    </label>
+                        {{ field }}
+                        <div class="help-block with-errors"></div>
+
+
+                </div>
+            {% endfor %}
+                <div class="form-group">
                 <button type="submit" class="btn btn-primary">Sign in</button>
                 <p><a href="#overlay-request" class="open-overlay">Forgot password?</a></p>
                 <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
-              </div>            
+              </div>
             </form>
             <div class="social-sign">
                 <div class="row">
@@ -218,22 +223,23 @@
         </div>  
       </div>
     </div>
-
+{% block js %}
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="{% static "microsocial/js/jquery-1.11.3.min.js"%}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static "microsocial/js/bootstrap.min.js"%}"></script>
     <!-- Magnific Popup -->
-    <script src="js/magnific-popup.min.js"></script>
+    <script src="{% static "microsocial/js/magnific-popup.min.js"%}"></script>
     <!-- Validator -->
-    <script src="js/validator.min.js"></script>
+    <script src="{% static "microsocial/js/validator.min.js"%}"></script>
     <!-- Select2 -->
-    <script src="js/select2.full.min.js"></script>
+    <script src="{% static "microsocial/js/select2.full.min.js"%}"></script>
     <!-- Google place API -->
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
     <!-- Control google API -->
-    <script src="js/adresses.js"></script>
+    <script src="{% static "microsocial/js/adresses.js"%}"></script>
     <!-- Custom scripts -->
-    <script src="js/custom-scripts.js"></script>
+    <script src="{% static "microsocial/js/custom-scripts.js"%}"></script>
+  {% endblock %}
   </body>
 </html>
