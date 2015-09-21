@@ -26,3 +26,14 @@ def show_paginator(page, page_arg_name='page'):
         'page': page,
         'page_arg_name': page_arg_name,
     }
+
+@register.filter
+def field_type(field):
+    if hasattr(field, 'field'):
+        field = field.field
+        # print field
+        s = str(type(field.widget).__name__)
+        # print s
+        s = s.rpartition('Input')[0]
+        s = s.lower()
+    return s

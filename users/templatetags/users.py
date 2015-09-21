@@ -8,4 +8,4 @@ def get_avatar(user):
     try:
         return user.avatar.url
     except ValueError:
-        return '{}users/images/default/default_avatar.png'.format(settings.STATIC_URL)
+        return '{}microsocial/images/default/default_avatar.png'.format(settings.STATIC_URL)

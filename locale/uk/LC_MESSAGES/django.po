@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-21 10:26+0000\n"
+"POT-Creation-Date: 2015-09-21 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,15 @@ msgstr "Підтвердити пароль"
 msgid "User with that email already exist."
 msgstr ""
 
-#: auths/forms.py:56
-msgid "Incorrect email or password"
-msgstr ""
+#: auths/forms.py:49 users/forms.py:34
+msgid "Password"
+msgstr "Пароль"
 
-#: auths/forms.py:71
+#: auths/forms.py:59
+msgid "Incorrect email or password"
+msgstr "Не правельний імейл і пароль"
+
+#: auths/forms.py:74
 msgid "User does not exist"
 msgstr ""
 
@@ -138,7 +142,7 @@ msgstr ""
 msgid "Українська"
 msgstr ""
 
-#: microsocial/templates/Index.html:24 microsocial/templates/base.html:24
+#: microsocial/templates/Index.html:24 microsocial/templates/base.html:44
 msgid "Content"
 msgstr "Контент"
 
@@ -209,10 +213,6 @@ msgstr ""
 msgid "New email"
 msgstr ""
 
-#: users/forms.py:34
-msgid "Password"
-msgstr "Пароль"
-
 #: users/forms.py:44
 msgid "User with this email already exist"
 msgstr ""
@@ -271,7 +271,7 @@ msgstr ""
 msgid "Інтереси"
 msgstr ""
 
-#: users/models.py:54 users/models.py:196
+#: users/models.py:54 users/models.py:206
 msgid "Неможна самого себе додати в друзі"
 msgstr ""
 
@@ -359,40 +359,41 @@ msgstr ""
 msgid "Confirm registration on Microsocial"
 msgstr ""
 
-#: users/models.py:171
+#: users/models.py:177
 msgid "Confirm password recovery on Microsocial"
 msgstr ""
 
-#: users/models.py:198
+#: users/models.py:208
 msgid "Ви вже друзі"
 msgstr ""
 
-#: users/models.py:200
+#: users/models.py:210
 msgid "Заявка вже створена і очікую розшляду"
 msgstr ""
 
-#: users/models.py:210
+#: users/models.py:220
 msgid "Заявки не існує"
 msgstr ""
 
-#: users/models.py:229
+#: users/models.py:239
 msgid "власник стіни"
 msgstr ""
 
-#: users/models.py:230
+#: users/models.py:240
 #, fuzzy
 #| msgid "authorization"
 msgid "author"
 msgstr "авторизація"
 
-#: users/models.py:231
+#: users/models.py:241
 msgid "text"
 msgstr ""
 
-#: users/models.py:232
+#: users/models.py:242
 msgid "date"
 msgstr ""
 
+#: users/templates/users/email_confirm_registration_template.html:3
 #: users/templates/users/email_template/email_confirm_recovery_password_template.html:3
 #: users/templates/users/email_template/email_confirm_registration_template.html:3
 #, python-format
@@ -443,15 +444,15 @@ msgstr ""
 
 #: users/templates/users/profile.html:47
 msgid "sex"
-msgstr ""
+msgstr "стать"
 
 #: users/templates/users/profile.html:53
 msgid "birth data"
-msgstr ""
+msgstr "дата народження"
 
 #: users/templates/users/profile.html:59
 msgid "city"
-msgstr ""
+msgstr "місто"
 
 #: users/templates/users/profile.html:65
 msgid "job"
@@ -469,15 +470,15 @@ msgstr ""
 
 #: users/templates/users/profile.html:89
 msgid "post"
-msgstr ""
+msgstr "Зробити запис на стіні"
 
 #: users/templates/users/search.html:4
 msgid "пошук людей"
 msgstr ""
 
 #: users/templates/users/search.html:69
-msgid "шукати"
-msgstr ""
+msgid "search"
+msgstr "шукати"
 
 #: users/templates/users/search.html:86
 #, python-format
@@ -548,29 +549,3 @@ msgstr ""
 msgid "Користувача успішно видалено з друзів."
 msgstr ""
 
-#~ msgid "Personal info"
-#~ msgstr "Персональна Інформація"
-
-#~ msgid "Permissions"
-#~ msgstr "Дозволи"
-
-#~ msgid "Enter the same password as above, for verification."
-#~ msgstr "Введіть той же пароль, як зазначено вище, для перевірки."
-
-#~ msgid "help"
-#~ msgstr "допомога"
-
-#~ msgid "advertisingz"
-#~ msgstr "реклама"
-
-#~ msgid "for developers"
-#~ msgstr "для розробників"
-
-#~ msgid "vacancies"
-#~ msgstr "вакансії"
-
-#~ msgid "log in"
-#~ msgstr "увійти"
-
-#~ msgid "reset"
-#~ msgstr "відновити"

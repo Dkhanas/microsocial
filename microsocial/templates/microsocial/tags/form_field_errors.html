@@ -1,10 +1,10 @@
 {% if errors %}
     {% if block_class %}
-        <div class="row">
             <div class="{{ block_class }}">
     {% endif %}
+    <div class="form-group   has-error ">
     {% for error in errors %}
-        <div class="alert alert-danger">{{ error }}</div>
+        <div class="help-block with-errors"><ul class="list-unstyled"><li>{{ error }}</li></ul></div>
     {% endfor %}
     {% if block_class %}
             </div>

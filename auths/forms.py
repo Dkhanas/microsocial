@@ -45,6 +45,9 @@ class LoginForm(AuthenticationForm, BootstrapFormMixin):
         super(LoginForm, self).__init__(*args, **kwargs)
         BootstrapFormMixin.__init__(self)
 
+    username = forms.CharField(widget=forms.EmailInput, label=(u'email'))
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+
     def clean(self):
         has_error = False
         try:
@@ -53,7 +56,7 @@ class LoginForm(AuthenticationForm, BootstrapFormMixin):
             has_error = True
         if has_error or self.errors or (self.user_cache and not self.user_cache.confirmed_registration):
             self._errors.clear()
-            raise forms.ValidationError(ugettext(u'Incorrect email or password'))
+            raise forms.ValidationError(ugettext(u'Incorrect email or password.'))
 
 
 class PasswordRecoveryForm(forms.Form, BootstrapFormMixin):
