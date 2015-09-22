@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-21 11:24+0000\n"
+"POT-Creation-Date: 2015-09-22 11:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,10 +28,8 @@ msgid "повтор паролю"
 msgstr ""
 
 #: auths/forms.py:26
-#, fuzzy
-#| msgid "Password confirmation"
 msgid "Passwords do not match"
-msgstr "Подтверждение пароля"
+msgstr ""
 
 #: auths/forms.py:31
 msgid "User with that email already exist."
@@ -39,10 +37,10 @@ msgstr ""
 
 #: auths/forms.py:49 users/forms.py:34
 msgid "Password"
-msgstr "Пароль"
+msgstr ""
 
 #: auths/forms.py:59
-msgid "Incorrect email or password"
+msgid "Incorrect email or password."
 msgstr ""
 
 #: auths/forms.py:74
@@ -50,10 +48,8 @@ msgid "User does not exist"
 msgstr ""
 
 #: auths/templates/auths/login.html:6
-#, fuzzy
-#| msgid "authorization"
 msgid "authentication"
-msgstr "авторизация"
+msgstr ""
 
 #: auths/templates/auths/login.html:22
 #: auths/templates/auths/password_recovery.html:35
@@ -65,15 +61,13 @@ msgstr ""
 
 #: auths/templates/auths/login.html:28
 #: auths/templates/auths/password_recovery.html:6
-#, fuzzy
-#| msgid "Password"
 msgid "password recovery"
-msgstr "пароль"
+msgstr ""
 
 #: auths/templates/auths/login.html:29
 #: auths/templates/auths/registration.html:18
 msgid "registration"
-msgstr "регистрация"
+msgstr ""
 
 #: auths/templates/auths/password_recovery.html:9
 #, python-format
@@ -81,21 +75,17 @@ msgid "Confirm recovery password via a link sent to Your email %(e)s."
 msgstr ""
 
 #: auths/templates/auths/password_recovery.html:29
-#, fuzzy
-#| msgid "Password"
 msgid "recovery password"
-msgstr "востановить пароль"
+msgstr ""
 
 #: auths/templates/auths/password_recovery_form.html:6
-#, fuzzy
-#| msgid "Password"
 msgid "new password"
-msgstr "пароль"
+msgstr ""
 
 #: auths/templates/auths/password_recovery_form.html:22
 #: users/templates/users/settings.html:40
 msgid "save"
-msgstr "сохранить"
+msgstr ""
 
 #: auths/templates/auths/registration.html:8
 #, python-format
@@ -109,7 +99,7 @@ msgstr ""
 
 #: auths/templates/auths/registration.html:34
 msgid "register"
-msgstr "зарегистрировать"
+msgstr ""
 
 #: auths/views.py:62
 msgid "Successfully confirmed your registration. Can enter"
@@ -145,29 +135,29 @@ msgstr ""
 
 #: microsocial/templates/Index.html:24 microsocial/templates/base.html:44
 msgid "Content"
-msgstr "Контент"
+msgstr ""
 
 #: microsocial/templates/header.html:10 news/templates/news/news.html:5
 msgid "новини"
-msgstr ""
+msgstr "новости"
 
 #: microsocial/templates/header.html:11
 msgid "мій профіль"
-msgstr ""
+msgstr "мой профиль"
 
 #: microsocial/templates/header.html:12 users/models.py:116
 #: users/templates/users/friends_base.html:9
 #: users/templates/users/friends_friends.html:5
 msgid "друзі"
-msgstr ""
+msgstr "друзья"
 
 #: microsocial/templates/header.html:13
 msgid "повідомлення"
-msgstr ""
+msgstr "сообщения"
 
 #: microsocial/templates/header.html:14
 msgid "пошук"
-msgstr ""
+msgstr "поиск"
 
 #: microsocial/templates/header.html:34
 msgid "logout"
@@ -211,20 +201,16 @@ msgid "Enter birth date in format YYYY-MM-DD"
 msgstr ""
 
 #: users/forms.py:33
-#, fuzzy
-#| msgid "email"
 msgid "New email"
-msgstr "email"
+msgstr ""
 
 #: users/forms.py:44
 msgid "User with this email already exist"
 msgstr ""
 
 #: users/forms.py:50
-#, fuzzy
-#| msgid "Password"
 msgid "Incorrect password."
-msgstr "востановить пароль"
+msgstr ""
 
 #: users/forms.py:65
 msgid "write on the wall..."
@@ -295,16 +281,12 @@ msgid "first name"
 msgstr ""
 
 #: users/models.py:100
-#, fuzzy
-#| msgid "name"
 msgid "last name"
-msgstr "имя"
+msgstr ""
 
 #: users/models.py:101
-#, fuzzy
-#| msgid "registration"
 msgid "confirmed registration "
-msgstr "регистрация"
+msgstr ""
 
 #: users/models.py:102
 msgid "avatar"
@@ -312,23 +294,21 @@ msgstr ""
 
 #: users/models.py:103
 msgid "staff status"
-msgstr "Статус персонала"
+msgstr ""
 
 #: users/models.py:104
 msgid "Designates whether the user can log into this admin site."
-msgstr "Определяет, может ли пользователь войти в этот администратора сайта."
+msgstr ""
 
 #: users/models.py:106
 msgid "active"
-msgstr "активный"
+msgstr ""
 
 #: users/models.py:107
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
-"Обозначает ли это пользователь должен рассматриваться как активный. Отмените "
-"этотВместо удаления учетных записей."
 
 #: users/models.py:109
 msgid "date joined"
@@ -383,10 +363,8 @@ msgid "власник стіни"
 msgstr ""
 
 #: users/models.py:240
-#, fuzzy
-#| msgid "authorization"
 msgid "author"
-msgstr "авторизация"
+msgstr ""
 
 #: users/models.py:241
 msgid "text"
@@ -462,10 +440,8 @@ msgid "job"
 msgstr ""
 
 #: users/templates/users/profile.html:71
-#, fuzzy
-#| msgid "about"
 msgid "about me"
-msgstr "О сайте"
+msgstr ""
 
 #: users/templates/users/profile.html:77
 msgid "interests"
@@ -498,21 +474,17 @@ msgstr ""
 
 #: users/templates/users/settings.html:53
 #: users/templates/users/settings.html:69
-#, fuzzy
-#| msgid "Password"
 msgid "change password"
-msgstr "пароль"
+msgstr "изменить пароль"
 
 #: users/templates/users/settings.html:82
 #: users/templates/users/settings.html:106
 msgid "change email"
-msgstr ""
+msgstr "изменить email"
 
 #: users/templates/users/settings.html:87
-#, fuzzy
-#| msgid "email"
 msgid "yours email"
-msgstr "email"
+msgstr "ваш email"
 
 #: users/views.py:55
 msgid "Message success posted"
@@ -553,30 +525,3 @@ msgstr ""
 #: users/views.py:229
 msgid "Користувача успішно видалено з друзів."
 msgstr ""
-
-#~ msgid "Personal info"
-#~ msgstr "Персональная информация"
-
-#~ msgid "Permissions"
-#~ msgstr "Разрешения"
-
-#~ msgid "Enter the same password as above, for verification."
-#~ msgstr "Введите тот же пароль, как указано выше, для проверки."
-
-#~ msgid "help"
-#~ msgstr "помощь"
-
-#~ msgid "advertisingz"
-#~ msgstr "реклама"
-
-#~ msgid "for developers"
-#~ msgstr "для разработчиков"
-
-#~ msgid "vacancies"
-#~ msgstr "вакансии"
-
-#~ msgid "log in"
-#~ msgstr "войти"
-
-#~ msgid "reset"
-#~ msgstr "востановить"

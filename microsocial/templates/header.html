@@ -1,8 +1,8 @@
-{% load static i18n %}
+{% load static i18n%}
 
 <div class="row">
     <div class="col-xs-4">
-        <a href="{% url 'main' %}"><img src="{% static 'microsocial/images/logo.png' %}"></a>
+        <a href="{% url 'main' %}"><img src="{% static 'microsocial/img/logo.png' %}"></a>
     </div>
     <div class="col-xs-6">
         {% if user.is_authenticated %}

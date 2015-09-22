@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-21 11:24+0000\n"
+"POT-Creation-Date: 2015-09-22 11:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgid "Password"
 msgstr ""
 
 #: auths/forms.py:59
-msgid "Incorrect email or password"
+msgid "Incorrect email or password."
 msgstr ""
 
 #: auths/forms.py:74
@@ -141,21 +141,21 @@ msgstr "news"
 
 #: microsocial/templates/header.html:11
 msgid "мій профіль"
-msgstr ""
+msgstr "my profile"
 
 #: microsocial/templates/header.html:12 users/models.py:116
 #: users/templates/users/friends_base.html:9
 #: users/templates/users/friends_friends.html:5
 msgid "друзі"
-msgstr ""
+msgstr "friends"
 
 #: microsocial/templates/header.html:13
 msgid "повідомлення"
-msgstr ""
+msgstr "messages"
 
 #: microsocial/templates/header.html:14
 msgid "пошук"
-msgstr ""
+msgstr "search"
 
 #: microsocial/templates/header.html:34
 msgid "logout"
@@ -419,15 +419,15 @@ msgstr ""
 
 #: users/templates/users/profile.html:30
 msgid "додати в друзі"
-msgstr "add to friends"
+msgstr ""
 
 #: users/templates/users/profile.html:47
 msgid "sex"
-msgstr "стать"
+msgstr ""
 
 #: users/templates/users/profile.html:53
 msgid "birth data"
-msgstr "дата народження"
+msgstr ""
 
 #: users/templates/users/profile.html:59
 msgid "city"
@@ -455,7 +455,7 @@ msgstr ""
 
 #: users/templates/users/search.html:69
 msgid "search"
-msgstr "шукати"
+msgstr ""
 
 #: users/templates/users/search.html:86
 #, python-format
@@ -523,4 +523,3 @@ msgstr ""
 #: users/views.py:229
 msgid "Користувача успішно видалено з друзів."
 msgstr ""
-
