@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load i18n microsocial %}
+
 {% block login %}
     {% if form.errors %}
         <script>
@@ -8,58 +9,56 @@
                 }, 1000);
         </script>
     {% endif %}
-{#    {% block pwd_r %}#}
-{#        <a class="sign-in__item open-overlay" href="#overlay-sign-in">Already a member? Sign in</a>#}
-{#    {% endblock %}#}
-<div class="overlay-wrap mfp-hide" id="overlay-sign-in">
-      <div class="container">
-        <div class="row">
-          <div class="overlay col-lg-12 ">
-            <h2>Sign In to Borebo</h2>
-            <form data-toggle="validator" role="form" method="post">
-                {% csrf_token %}
-                {% show_form_errors form %}
-                {% for field in form %}
-                    <div class="form-group  {% if form.errors %} has-error {% endif %}">
-                    <label for="{{ field.id_for_label }}" class="control-label">
-                        {{ field.label|capfirst }}:</label>
-                    <input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"
-                           id="{{ field.id_for_label }}"
-                        {% if field|field_type != 'password' %}data-error="That email address is invalid"
-                        {% endif %} required="">
-                    <div class="help-block with-errors">
-                        <ul class="list-unstyled">
-                        {% if form.errors and field|field_type == 'password' %}<li></li>{% endif %}
-                        </ul>
-                    </div>
-                    </div>
-                {% endfor %}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                    <p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>
-                    <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
-              </div>
-            </form>
 
-            <div class="social-sign">
-                <div class="row">
-                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <p>Sign in with:</p>
+<div class="overlay-wrap mfp-hide" id="overlay-sign-in">
+    <div class="container">
+        <div class="row">
+            <div class="overlay col-lg-12 ">
+                <h2>Sign In to Borebo</h2>
+                <form data-toggle="validator" role="form" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group  {% if form.errors %} has-error {% endif %}">
+                        <label for="{{ field.id_for_label }}" class="control-label">
+                            {{ field.label|capfirst }}:</label>
+                        <input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"
+                               id="{{ field.id_for_label }}"
+                            {% if field|field_type != 'password' %} data-error="That email address is invalid"
+                            {% endif %} required="">
+                            <div class="help-block with-errors">
+                                <ul class="list-unstyled">
+                                {% if form.errors and field|field_type == 'password' %}
+                                    <li>{% show_form_errors form %}</li>
+                                {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>
+                        <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
                   </div>
-                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <ul class="social-sign-in text-left">
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                  </ul>
-                  </div>
+                </form>
+                <div class="social-sign">
+                    <div class="row">
+                      <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <p>Sign in with:</p>
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <ul class="social-sign-in text-left">
+                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                      </ul>
+                      </div>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 {% endblock %}
 
