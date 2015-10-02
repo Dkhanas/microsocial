@@ -73,17 +73,14 @@
                 <div class="left-copyright col-lg-3 col-md-3 col-sm-4 col-xs-12 text-left">
                     <a class="left-copyright__item left-copyright__item_landing" href="http://seclgroup.com/" target="_blank">Created by: </a>
                     <a class="left-copyright__item left-copyright__item_landing" href="http://seclgroup.com/" target="_blank">SECL Group</a>
-                </div>                
+                </div>
+                {% get_flatpages as flatpages %}
                 <ul class="footer-menu col-lg-6 col-md-6 col-sm-3 col-xs-12">
+                    {% for page in flatpages %}
                     <li class="footer-menu__item footer-menu__item_landing">
-                        <a href="aboutUs.html">About us</a>
+                        <a href="{{ page.url }}">{{ page.title|capfirst }}</a>
                     </li>
-                    <li class="footer-menu__item footer-menu__item_landing">
-                        <a href="contact.html">Contact us</a>
-                    </li>
-                    <li class="footer-menu__item footer-menu__item_landing">
-                        <a href="#">Terms & conditions</a>
-                    </li>
+                    {% endfor %}
                 </ul>
                 <div class="right-copyright col-lg-3 col-md-3 col-sm-5 col-xs-12 text-right">
                     <div class="right-copyright__item right-copyright__item_landing">© All right are reserved to borebo 2015</div>
