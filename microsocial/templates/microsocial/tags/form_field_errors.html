@@ -2,12 +2,10 @@
     {% if block_class %}
             <div class="{{ block_class }}">
     {% endif %}
-    <div class="form-group   has-error ">
     {% for error in errors %}
-        <div class="help-block with-errors"><ul class="list-unstyled"><li>{{ error }}</li></ul></div>
+        <ul class="list-unstyled"><li>{{ error }}</li></ul>
     {% endfor %}
     {% if block_class %}
             </div>
-        </div>
     {% endif %}
 {% endif %}
