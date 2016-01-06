@@ -1,46 +1,154 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% load i18n microsocial %}
-{% block content %}
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-3">
-            {% if registered_user %}
-                <h1 >
-                    {% blocktrans trimmed with u=registered_user.get_short_name %}
-                        Thank you for signing {{ u }}!
-                    {% endblocktrans %}
-                </h1>
-                <p>
-                    {% blocktrans trimmed with e=registered_user.email %}
-                        Confirm registration via a link sent to Your email {{ e }}.
-                    {% endblocktrans %}
-                </p>
-            {% else %}
-                <h1 class="text-center">{% trans 'registration'|capfirst %}</h1>
-                <form class="form-horizontal" method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {% show_form_field_error field.errors 'col-sm-offset-4 col-sm-8' %}
-                        <div class="form-group {% if field.errors %} has-error {% endif %}">
-                             <label for="{{ field.id_for_label }}" class="control-label col-sm-4">
-                                 {{ field.label|capfirst }}
-                             </label>
-                        <div class="col-sm-8">
-                            {{ field }}
-                        </div>
-                        </div>
-                    {% endfor %}
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
-                            <input type="submit" class="btn btn-primary" value="{% trans 'register'|capfirst %}">
-                        </div>
-                    </div>
-                </form>
-                <div class="row" style="margin: 40px;">
-                    <div class="col-sm-offset-4 col-sm-8">
-                        <a href="{% url 'login' %}" title="login">{% trans 'login'|capfirst %}</a>
-                    </div>
+{% block pwd_r %}
+    <a class="sign-in__item" href="{% url 'login' %}">Already a member? Sign in</a>
+{% endblock %}
+{% block login %}
+
+    <script>
+        setTimeout(function(){
+        $('.overlay-sign-up').trigger('click');
+        }, 1000);
+    </script>
+{% block registration %}
+     <a href='#overlay-sign-up' data-effect="mfp-zoom-in" class="sign-up open-overlay">
+                        <span class="sign-up__item sign-up__item_mod">New User?</span>
+                        <span class="sign-up__item">Sign Up!</span>
+                    </a>
+        {% endblock %}
+    <!-- Sign Up -->
+
+    <div class="overlay-wrap mfp-hide" id="overlay-sign-up'">
+
+      <div class="container">
+        <div class="row">
+          <div class="overlay col-lg-12 ">
+            <h2>Sign Up to Borebo</h2>
+{#              {% if registered_user %}#}
+{#                <h1 >#}
+{#                    {% blocktrans trimmed with u=registered_user.get_short_name %}#}
+{#                        Thank you for signing {{ u }}!#}
+{#                    {% endblocktrans %}#}
+{#                </h1>#}
+{#                <p>#}
+{#                    {% blocktrans trimmed with e=registered_user.email %}#}
+{#                        Confirm registration via a link sent to Your email {{ e }}.#}
+{#                    {% endblocktrans %}#}
+{#                </p>#}
+{#            {% else %}#}
+{#           <h1 class="text-center">{% trans 'registration'|capfirst %}</h1>#}
+{#                <form class="form-horizontal" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    {% for field in form %}#}
+{#                        {% show_form_field_error field.errors 'col-sm-offset-4 col-sm-8' %}#}
+{#                        <div class="form-group {% if field.errors %} has-error {% endif %}">#}
+{#                             <label for="{{ field.id_for_label }}" class="control-label col-sm-4">#}
+{#                                 {{ field.label|capfirst }}#}
+{#                             </label>#}
+{#                        <div class="col-sm-8">#}
+{#                            {{ field }}#}
+{#                        </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                    <div class="form-group">#}
+{#                        <div class="col-sm-offset-4 col-sm-8">#}
+{#                            <input type="submit" class="btn btn-primary" value="{% trans 'register'|capfirst %}">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </form>#}
+{#                <div class="row" style="margin: 40px;">#}
+{#                    <div class="col-sm-offset-4 col-sm-8">#}
+{#                        <a href="{% url 'login' %}" title="login">{% trans 'login'|capfirst %}</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+
+
+            <form data-toggle="validator" role="form">
+              <div class="form-group">
+                <label for="firstName" class="control-label">First name: </label>
+                <input type="text" class="form-control" id="firstName" required >
+              </div>
+              <div class="form-group">
+                <label for="lastName" class="control-label">Last name: </label>
+                <input type="text" class="form-control" id="lastName" required >
+              </div>
+              <div class="form-group">
+                <label for="inputEmail" class="control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword" class="control-label">Password (6 or more charackters): </label>
+                <input type="password" data-minlength="6" class="form-control" id="inputPassword" required data-error="Password must be minimum 6 charackters">
+                <div class="help-block with-errors"></div>
+              </div>
+              <div class="form-group">
+                <p>By clicking Join now, you agree to <a href="#">Privacy Policy</a></p>
+                <button type="submit" class="btn btn-primary">Join Now</button>
+                <p>Already a member? <a href="#overlay-sign-in" class="open-overlay">Sign in</a></p>
+              </div>
+            </form>
+            <div class="social-sign">
+                <div class="row">
+                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p>Sign in with:</p>
+                  </div>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <ul class="social-sign-in text-left">
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                  </ul>
+                  </div>
                 </div>
-            {% endif %}
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+{#    <div class="row">#}
+{#        <div class="col-xs-offset-3 col-xs-3">#}
+{#            {% if registered_user %}#}
+{#                <h1 >#}
+{#                    {% blocktrans trimmed with u=registered_user.get_short_name %}#}
+{#                        Thank you for signing {{ u }}!#}
+{#                    {% endblocktrans %}#}
+{#                </h1>#}
+{#                <p>#}
+{#                    {% blocktrans trimmed with e=registered_user.email %}#}
+{#                        Confirm registration via a link sent to Your email {{ e }}.#}
+{#                    {% endblocktrans %}#}
+{#                </p>#}
+{#            {% else %}#}
+{#                <h1 class="text-center">{% trans 'registration'|capfirst %}</h1>#}
+{#                <form class="form-horizontal" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    {% for field in form %}#}
+{#                        {% show_form_field_error field.errors 'col-sm-offset-4 col-sm-8' %}#}
+{#                        <div class="form-group {% if field.errors %} has-error {% endif %}">#}
+{#                             <label for="{{ field.id_for_label }}" class="control-label col-sm-4">#}
+{#                                 {{ field.label|capfirst }}#}
+{#                             </label>#}
+{#                        <div class="col-sm-8">#}
+{#                            {{ field }}#}
+{#                        </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                    <div class="form-group">#}
+{#                        <div class="col-sm-offset-4 col-sm-8">#}
+{#                            <input type="submit" class="btn btn-primary" value="{% trans 'register'|capfirst %}">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </form>#}
+{#                <div class="row" style="margin: 40px;">#}
+{#                    <div class="col-sm-offset-4 col-sm-8">#}
+{#                        <a href="{% url 'login' %}" title="login">{% trans 'login'|capfirst %}</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
 {% endblock %}

@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'microsocial',
     'dialogs',
     'news',
+    'videomain',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

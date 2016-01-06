@@ -46,10 +46,13 @@
                             Share videos privately with friends and family, or with the whole world, on computers, phones, tablets, and TVs
                         </p>
                     </div>
-                    <a href='#overlay-sign-up' data-effect="mfp-zoom-in" class="sign-up open-overlay">
+                   {% block registration %}
+         <a href='{% url "registration" %}' class="sign-up">
                         <span class="sign-up__item sign-up__item_mod">New User?</span>
                         <span class="sign-up__item">Sign Up!</span>
                     </a>
+                    </a>
+        {% endblock %}
                     <div class="sign-in">
                         {% block pwd_r %}
                             <a class="sign-in__item open-overlay" href="#overlay-sign-in">Already a member? Sign in</a>
@@ -59,7 +62,12 @@
                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                     <div class="video video_mod">
                         <div class="video__item">
-                          <iframe src="https://player.vimeo.com/video/135798920"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+{#                            {% include 'video_for_main/video_for_main.html' %}#}
+                            {% block url_video %}
+
+
+                            {% endblock %}
+
                         </div>
                     </div>  
                 </div>
@@ -95,62 +103,62 @@
 
     <!-- Sign Up -->
 
-    <div class="overlay-wrap mfp-hide" id="overlay-sign-up">
-
-      <div class="container">
-        <div class="row">
-          <div class="overlay col-lg-12 ">
-            <h2>Sign Up to Borebo</h2>
-            <form data-toggle="validator" role="form">
-              <div class="form-group">
-                <label for="firstName" class="control-label">First name: </label>
-                <input type="text" class="form-control" id="firstName" required >
-              </div>
-              <div class="form-group">
-                <label for="lastName" class="control-label">Last name: </label>
-                <input type="text" class="form-control" id="lastName" required >
-              </div>
-              <div class="form-group">
-                <label for="inputEmail" class="control-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>
-                <div class="help-block with-errors"></div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword" class="control-label">Password (6 or more charackters): </label>                
-                <input type="password" data-minlength="6" class="form-control" id="inputPassword" required data-error="Password must be minimum 6 charackters">
-                <div class="help-block with-errors"></div>                
-              </div>           
-              <div class="form-group">
-                <p>By clicking Join now, you agree to <a href="#">Privacy Policy</a></p>
-                <button type="submit" class="btn btn-primary">Join Now</button>
-                <p>Already a member? <a href="#overlay-sign-in" class="open-overlay">Sign in</a></p>
-              </div>            
-            </form>
-            <div class="social-sign">
-                <div class="row">
-                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <p>Sign in with:</p>
-                  </div>
-                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <ul class="social-sign-in text-left">
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                  </ul>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>  
-      </div>
-    </div>
+{#    <div class="overlay-wrap mfp-hide" id="overlay-sign-up">#}
+{##}
+{#      <div class="container">#}
+{#        <div class="row">#}
+{#          <div class="overlay col-lg-12 ">#}
+{#            <h2>Sign Up to Borebo</h2>#}
+{#            <form data-toggle="validator" role="form">#}
+{#              <div class="form-group">#}
+{#                <label for="firstName" class="control-label">First name: </label>#}
+{#                <input type="text" class="form-control" id="firstName" required >#}
+{#              </div>#}
+{#              <div class="form-group">#}
+{#                <label for="lastName" class="control-label">Last name: </label>#}
+{#                <input type="text" class="form-control" id="lastName" required >#}
+{#              </div>#}
+{#              <div class="form-group">#}
+{#                <label for="inputEmail" class="control-label">Email</label>#}
+{#                <input type="email" class="form-control" id="inputEmail" data-error="That email address is invalid" required>#}
+{#                <div class="help-block with-errors"></div>#}
+{#              </div>#}
+{#              <div class="form-group">#}
+{#                <label for="inputPassword" class="control-label">Password (6 or more charackters): </label>                #}
+{#                <input type="password" data-minlength="6" class="form-control" id="inputPassword" required data-error="Password must be minimum 6 charackters">#}
+{#                <div class="help-block with-errors"></div>                #}
+{#              </div>           #}
+{#              <div class="form-group">#}
+{#                <p>By clicking Join now, you agree to <a href="#">Privacy Policy</a></p>#}
+{#                <button type="submit" class="btn btn-primary">Join Now</button>#}
+{#                <p>Already a member? <a href="#overlay-sign-in" class="open-overlay">Sign in</a></p>#}
+{#              </div>            #}
+{#            </form>#}
+{#            <div class="social-sign">#}
+{#                <div class="row">#}
+{#                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">#}
+{#                    <p>Sign in with:</p>#}
+{#                  </div>#}
+{#                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">#}
+{#                    <ul class="social-sign-in text-left">#}
+{#                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>#}
+{#                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>#}
+{#                  </ul>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>  #}
+{#      </div>#}
+{#    </div>#}
 
     <!-- Sign In -->
 
     {% block login %}
-        {% include "auths/login.html" %}
+{#        {% include "auths/login.html" %}#}
     {% endblock %}
 
     <!-- Request a Password Change -->

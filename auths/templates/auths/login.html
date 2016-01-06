@@ -1,5 +1,8 @@
 {% extends 'main.html' %}
 {% load i18n microsocial %}
+{% block url_video %}
+{% endblock %}
+
 {% block login %}
     {% if form.errors %}
         <script>
@@ -18,7 +21,7 @@
             <h2>Sign In to Borebo</h2>
             <form data-toggle="validator" role="form" method="post">
                 {% csrf_token %}
-                {% show_form_errors form %}
+{#                {% show_form_errors form %}#}
                 {% for field in form %}
                     <div class="form-group  {% if form.errors %} has-error {% endif %}">
                     <label for="{{ field.id_for_label }}" class="control-label">

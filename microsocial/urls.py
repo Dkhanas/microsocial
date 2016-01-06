@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'', include('auths.urls')),
     url(r'', include('dialogs.urls')),
     url(r'', include('news.urls')),
+    url(r'', include('videomain.urls')),
 ]
 
 if settings.DEBUG:
