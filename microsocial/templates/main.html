@@ -63,11 +63,9 @@
                     <div class="video video_mod">
                         <div class="video__item">
 {#                            {% include 'video_for_main/video_for_main.html' %}#}
-                            {% block url_video %}
-
-
-                            {% endblock %}
-
+                           {% block url_video %}
+                                <iframe src="{{ video.video_url }}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                           {% endblock %}
                         </div>
                     </div>  
                 </div>

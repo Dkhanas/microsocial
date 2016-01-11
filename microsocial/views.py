@@ -4,6 +4,11 @@ from django.shortcuts import redirect, render
 
 
 # @login_required
+from videomain.models import VideoMainPage
+
+
 def main(requests):
+    #TODO: 1:"Check last active"
     # return redirect('user_profile', user_id=requests.user.pk, permanent=False)
-    return render(requests, 'main.html')
+    video = VideoMainPage.objects.get(checked=True)
+    return render(requests, 'main.html', {'video': video})
