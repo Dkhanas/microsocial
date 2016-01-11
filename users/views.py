@@ -173,7 +173,7 @@ class FriendshipApiView(View):
         if not hasattr(self, method_name):
             raise Http404
         default_url = getattr(self, method_name)()
-        return redirect(request.POST.get('next') or default_url or 'main')
+        return redirect(request.POST.get('next') or default_url or 'news')
 
     def _get_user_from_post_field(self, field_name):
         try:

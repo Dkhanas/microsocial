@@ -14,7 +14,7 @@ from users.models import User
 
 def login_view(request):
     if request.user.is_authenticated():
-        return redirect('main')
+        return redirect('news')
     return login(request, 'auths/login.html', authentication_form=LoginForm)
 
 
@@ -23,7 +23,7 @@ class RegistrationView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return redirect('main')
+            return redirect('news')
         self.form = RegistrationForm(request.POST or None)
         return super(RegistrationView, self).dispatch(request, *args, **kwargs)
 
@@ -68,7 +68,7 @@ class PasswordRecovery(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return redirect('main')
+            return redirect('news')
         self.form_pwd = PasswordRecoveryForm(request.POST or None)
         return super(PasswordRecovery, self).dispatch(request, *args, **kwargs)
 
@@ -93,7 +93,7 @@ class PasswordRecoveryConfirm(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return redirect('main')
+            return redirect('news')
         try:
             data = TimestampSigner(salt='password-recovery-confirm').unsign(kwargs['token'], max_age=(48 * 3600))
             user_id, last_login_hash = data.split(':')
