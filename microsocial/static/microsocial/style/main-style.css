@@ -333,6 +333,10 @@
 .logo {
   font-size: 2rem;
 }
+.logo img {
+    width: 90%;
+    margin: 0 auto
+}
 .logo a {
   width: 35px;
   height: 35px;

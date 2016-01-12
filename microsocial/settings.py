@@ -122,7 +122,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'main'
 LOGIN_REDIRECT_URL = 'news'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
