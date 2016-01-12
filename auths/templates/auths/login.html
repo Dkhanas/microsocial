@@ -15,98 +15,178 @@
         </script>
     {% endif %}
 
-<div class="overlay-wrap mfp-hide" id="overlay-sign-in">
-    <div class="container">
-        <div class="row">
-<<<<<<< HEAD
-          <div class="overlay col-lg-12 ">
-            <h2>Sign In to Borebo</h2>
-            <form data-toggle="validator" role="form" method="post">
-                {% csrf_token %}
-{#                {% show_form_errors form %}#}
-                {% for field in form %}
-                    <div class="form-group  {% if form.errors %} has-error {% endif %}">
-                    <label for="{{ field.id_for_label }}" class="control-label">
-                        {{ field.label|capfirst }}:</label>
-                    <input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"
-                           id="{{ field.id_for_label }}"
-                        {% if field|field_type != 'password' %}data-error="That email address is invalid"
-                        {% endif %} required="">
-                    <div class="help-block with-errors">
-                        <ul class="list-unstyled">
-                        {% if form.errors and field|field_type == 'password' %}<li></li>{% endif %}
-                        </ul>
-                    </div>
-                    </div>
-                {% endfor %}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                    <p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>
-                    <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
-              </div>
-            </form>
+<!--<div class="overlay-wrap mfp-hide" id="overlay-sign-in">-->
+    <!--<div class="container">-->
+        <!--<div class="row">-->
+<!--<<<<<<< HEAD-->
+          <!--<div class="overlay col-lg-12 ">-->
+            <!--<h2>Sign In to Borebo</h2>-->
+            <!--<form data-toggle="validator" role="form" method="post">-->
+                <!--{% csrf_token %}-->
+<!--{#                {% show_form_errors form %}#}-->
+                <!--{% for field in form %}-->
+                    <!--<div class="form-group  {% if form.errors %} has-error {% endif %}">-->
+                    <!--<label for="{{ field.id_for_label }}" class="control-label">-->
+                        <!--{{ field.label|capfirst }}:</label>-->
+                    <!--<input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"-->
+                           <!--id="{{ field.id_for_label }}"-->
+                        <!--{% if field|field_type != 'password' %}data-error="That email address is invalid"-->
+                        <!--{% endif %} required="">-->
+                    <!--<div class="help-block with-errors">-->
+                        <!--<ul class="list-unstyled">-->
+                        <!--{% if form.errors and field|field_type == 'password' %}<li></li>{% endif %}-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                <!--{% endfor %}-->
+                <!--<div class="form-group">-->
+                    <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                    <!--<p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>-->
+                    <!--<p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>-->
+              <!--</div>-->
+            <!--</form>-->
 
-            <div class="social-sign">
-                <div class="row">
-                  <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <p>Sign in with:</p>
-                  </div>
-                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <ul class="social-sign-in text-left">
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                  </ul>
-=======
-            <div class="overlay col-lg-12 ">
-                <h2>Sign In to Borebo</h2>
-                <form data-toggle="validator" role="form" method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="form-group  {% if form.errors %} has-error {% endif %}">
-                        <label for="{{ field.id_for_label }}" class="control-label">
-                            {{ field.label|capfirst }}:</label>
-                        <input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"
-                               id="{{ field.id_for_label }}"
-                            {% if field|field_type != 'password' %} data-error="That email address is invalid"
-                            {% endif %} required="">
-                            <div class="help-block with-errors">
-                                <ul class="list-unstyled">
-                                {% if form.errors and field|field_type == 'password' %}
-                                    <li>{% show_form_errors form %}</li>
-                                {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                        <p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>
-                        <p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>
->>>>>>> origin
-                  </div>
-                </form>
-                <div class="social-sign">
-                    <div class="row">
-                      <div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <p>Sign in with:</p>
-                      </div>
-                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <ul class="social-sign-in text-left">
-                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                          <li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                      </ul>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+            <!--<div class="social-sign">-->
+                <!--<div class="row">-->
+                  <!--<div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                    <!--<p>Sign in with:</p>-->
+                  <!--</div>-->
+                  <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">-->
+                    <!--<ul class="social-sign-in text-left">-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>-->
+                  <!--</ul>-->
+<!--=======-->
+            <!--<div class="overlay col-lg-12 ">-->
+                <!--<h2>Sign In to Borebo</h2>-->
+                <!--<form data-toggle="validator" role="form" method="post">-->
+                    <!--{% csrf_token %}-->
+                    <!--{% for field in form %}-->
+                        <!--<div class="form-group  {% if form.errors %} has-error {% endif %}">-->
+                        <!--<label for="{{ field.id_for_label }}" class="control-label">-->
+                            <!--{{ field.label|capfirst }}:</label>-->
+                        <!--<input type="{{ field|field_type }}" name="{{ field.name }}" class="form-control"-->
+                               <!--id="{{ field.id_for_label }}"-->
+                            <!--{% if field|field_type != 'password' %} data-error="That email address is invalid"-->
+                            <!--{% endif %} required="">-->
+                            <!--<div class="help-block with-errors">-->
+                                <!--<ul class="list-unstyled">-->
+                                <!--{% if form.errors and field|field_type == 'password' %}-->
+                                    <!--<li>{% show_form_errors form %}</li>-->
+                                <!--{% endif %}-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--{% endfor %}-->
+                    <!--<div class="form-group">-->
+                        <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                        <!--<p><a href="{% url "password_recovery" %}" >Forgot password?</a></p>-->
+                        <!--<p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>-->
+<!--&gt;>>>>>> origin-->
+                  <!--</div>-->
+                <!--</form>-->
+                <!--<div class="social-sign">-->
+                    <!--<div class="row">-->
+                      <!--<div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                        <!--<p>Sign in with:</p>-->
+                      <!--</div>-->
+                      <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">-->
+                        <!--<ul class="social-sign-in text-left">-->
+                          <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                          <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                          <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+                          <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                          <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>-->
+                      <!--</ul>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="overlay-wrap mfp-hide" id="overlay-sign-in">-->
+
+      <!--<div class="container">-->
+        <!--<div class="row">-->
+          <!--<div class="overlay col-lg-12 ">-->
+            <!--<h2>Sign In to Borebo</h2>-->
+            <!--<form data-toggle="validator" id="form-sign-in" role="form" method="post" novalidate="true">-->
+                <!--{% csrf_token %}-->
+                <!--&lt;!&ndash;<input type="hidden" name="csrfmiddlewaretoken" value="NN4PuStLZHIfMyBZqhKuicGtKIEkBRw8">&ndash;&gt;-->
+
+
+                    <!--<div class="form-group">-->
+                    <!--<label for="id_username" class="control-label">-->
+                        <!--Email:</label>-->
+                    <!--<input type="email" name="username" class="form-control" id="id_username" data-error="That email address is invalid" required="">-->
+                    <!--<div class="help-block with-errors">-->
+                        <!--<ul class="list-unstyled">-->
+
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                    <!--<label for="id_password" class="control-label">-->
+                        <!--Пароль:</label>-->
+                    <!--<input type="password" name="password" class="form-control" id="id_password" required="">-->
+                    <!--<div class="help-block with-errors">-->
+                        <!--<ul class="list-unstyled">-->
+
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<button type="submit" class="btn btn-primary">Sign in</button>-->
+                    <!--<p><a href="/password-recovery/">Forgot password?</a></p>-->
+                    <!--<p><a href="#overlay-sign-up" class="open-overlay">Sign Up</a></p>-->
+              <!--</div>-->
+            <!--</form>-->
+            <!--<div class="social-sign">-->
+                <!--<div class="row">-->
+                  <!--<div class=" text-right col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
+                    <!--<p>Sign in with:</p>-->
+                  <!--</div>-->
+                  <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">-->
+                    <!--<ul class="social-sign-in text-left">-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                      <!--<li class="social-sign-in__item"><a href="#"><i class="fa fa-tumblr"></i></a></li>-->
+                  <!--</ul>-->
+                  <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+{% block js %}
+{{block.super}}
+<!--<script type="text/javascript">-->
+        <!--$(document).on('#submit','#form-sign-in',function(e){-->
+            <!--e.preventDefault();-->
+            <!--$.ajax({-->
+                <!--type:'POST',-->
+                <!--url:'/login/',-->
+                <!--data:{-->
+                    <!--username:$('#username').val(),-->
+                    <!--password:$('#password').val(),-->
+                    <!--csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()-->
+                <!--},-->
+                <!--sucess:function(){-->
+                <!--alert('test');-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+{% endblock %}
 {% endblock %}
 
