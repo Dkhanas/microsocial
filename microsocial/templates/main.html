@@ -54,9 +54,7 @@
                     </a>
                     {% endblock %}
                     <div class="sign-in">
-                        {% block pwd_r %}
                             <a class="sign-in__item open-overlay" href="#overlay-sign-in">Already a member? Sign in</a>
-                        {% endblock %}
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
@@ -183,7 +181,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                         <!--TODO: passord recovery popup -->
-                        <p><a href="/password-recovery/">Forgot password?</a></p>
+                        <p><a href="#overlay-request" class="open-overlay">Forgot password?</a></p>
                      </div>
                 </form>
                 <div class="social-sign">
@@ -207,11 +205,43 @@
     </div>
 </div>
 
-    <!-- Request a Password Change -->
-{#    {% block login  %}#}
-{#        {% include "auths/password_recovery.html" %}#}
-{#    {% endblock %}#}
+<!-- Request a Password Change -->
 
+    <div class="overlay-wrap mfp-hide" id="overlay-request">
+      <div class="container">
+        <div class="row">
+          <div class="overlay col-lg-12 ">
+            <h2>Request a Password Change</h2>
+              <!--TODO: disable redirect to password recovery-->
+              {% if pwd_recovery_user %}
+                    <p>
+                        {% blocktrans trimmed with e=registered_user.email %}
+                            Confirm recovery password via a link sent to Your email {{ e }}.
+                        {% endblocktrans %}
+                    </p>
+                {% else %}
+            <form data-toggle="validator" action="/password-recovery/" role="form" method="post"
+                                            novalidate="true" id="from-overlay-request">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="id_email" class="control-label">
+                    Email  </label>
+                    <input type="email" class="form-control" name="email" id="id_email"
+                           data-error="That email address is invalid" required="">
+                                <div class="help-block with-errors">
+                                    <ul class="list-unstyled">
+                                    <li></li></ul>
+                                </div>
+                            </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" >Continue</button>
+              </div>
+            </form>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
 
     {% block js %}
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -239,6 +269,20 @@
                     data:{
                         username:$('#username').val(),
                         password:$('#password').val(),
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                    },
+                    sucess:function(){
+                    alert('test');
+                    }
+                });
+            });
+            $(document).on('#submit','#from-overlay-request',function(e){
+                e.preventDefault();
+                $.ajax({
+                    type:'POST',
+                    url:'/password-recovery/',
+                    data:{
+                        email:$('#email').val(),
                         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
                     },
                     sucess:function(){

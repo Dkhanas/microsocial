@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load i18n microsocial %}
 {% block pwd_r %}
-    <a class="sign-in__item" href="{% url 'login' %}">Already a member? Sign in</a>
+    <a class="sign-in__item" href="{% url 'main' %}">Already a member? Sign in</a>
 {% endblock %}
 {% block login %}
 
@@ -145,7 +145,7 @@
 {#                </form>#}
 {#                <div class="row" style="margin: 40px;">#}
 {#                    <div class="col-sm-offset-4 col-sm-8">#}
-{#                        <a href="{% url 'login' %}" title="login">{% trans 'login'|capfirst %}</a>#}
+{#                        <a href="{% url 'main' %}" title="login">{% trans 'login'|capfirst %}</a>#}
 {#                    </div>#}
 {#                </div>#}
 {#            {% endif %}#}
