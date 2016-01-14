@@ -30,33 +30,112 @@
     {% endblock %}
 </head>
 <body>
-<!--<div class="container">-->
 <div class="shadow"></div>
-<!--<div class="page">-->
-    <!--<header>-->
+<div class="page">
         {% block header %}
            {% include 'header.html' %}
         {% endblock %}
-    <!--</header>-->
-    <!--</div>-->
+<div class="moveMenuBtn hidden-lg hidden-md hidden-sm">
+          <button type="button" class="btn btn-info"><i class="fa fa-bars"></i></button>
+      </div>
+<div class="main">
+          <div class="container">
+              <div class="row">
+
+
+
+                <!-- Left sidebar -->
+
+                  <div class="left-sidebar col-lg-3 col-md-3 col-sm-3 col-xs-8">
+
+
+
+                      <!-- Search -->
+
+                      <div class="search">
+                        <input type="search" class="form-control search__item">
+                        <i class="fa fa-search search__item search__item_icon"></i>
+                      </div>
+
+                      <!-- Left Menu -->
+
+                      <ul class="left-menu list-unstyled">
+                        <li class="left-menu__item">
+                          <a href="main.html">
+                              <i class="fa fa-home"></i>Home
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-star-o"></i>Suggested
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-newspaper-o"></i>News
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-file-image-o"></i>Discussions
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-heart-o"></i>Favorites
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-users"></i>Friends<span class="newRequest">5</span>
+                          </a>
+                        </li>
+                        <li class="left-menu__item">
+                          <a href="#">
+                              <i class="fa fa-envelope-o"></i>Messages
+                          </a>
+                        </li>
+                      </ul>
+
+                      <!-- Video banner -->
+
+                      <div class="videobanner">
+                          <img class="videobanner__item" src="http://placehold.it/264x374" />
+                      </div>
+
+                  </div>
+
     {% show_messages %}
     {% block content %}
         <div>
         {% trans 'Content' %}
         </div>
+    </div>
     {% endblock %}
+              </div>
+    </div>
     {% block footer %}
-        <footer class="base">
+        <div class="footer-wrap">
             <div class="container">
-                <p class="text-center margin flatpages">
-                    {% get_flatpages as flatepages %}
-                    {% for page in flatepages %}
-                        <a href="{{ page.url }}">{{ page.title }}</a>
-                    {% endfor %}
-                </p>
-                <p class="text-center text-muted margin">© Copiright {% now 'Y' %} </p>
+                <div class="row footer">
+                    <div class="left-copyright col-lg-3 col-md-3 col-sm-4 col-xs-12 text-left">
+                        <a class="left-copyright__item" href="http://seclgroup.com/" target="_blank">Created by: </a>
+                        <a class="left-copyright__item" href="http://seclgroup.com/" target="_blank">SECL Group</a>
+                    </div>
+                    <ul class="footer-menu col-lg-6 col-md-6 col-sm-3 col-xs-12">
+                        <li class="footer-menu__item">
+                            {% get_flatpages as flatepages %}
+                            {% for page in flatepages %}
+                                <a href="{{ page.url }}">{{ page.title }}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                    <div class="right-copyright col-lg-3 col-md-3 col-sm-5 col-xs-12 text-right">
+                        <div class="right-copyright__item">© All right are reserved to borebo 2015</div>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
     {% endblock %}
     {% block js %}
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -77,6 +156,6 @@
             <!-- Custom scripts -->
             <script src="{% static 'microsocial/js/custom-scripts.js'%}"></script>
     {% endblock %}
-<!--</div>-->
+
 </body>
 </html>

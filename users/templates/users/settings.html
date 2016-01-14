@@ -1,112 +1,160 @@
 {% extends 'base.html' %}
 {% load i18n microsocial %}
 {% block content %}
-    <form class="form-horizontal" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="profile">
-        <div class="row">
-            <div class="col-sm-3">
-                {% if profile_form.instance.avatar %}
-                    <img class="img-responsive" src="{{ profile_form.instance.avatar.url }}">
-                    <div class="checkbox" style="margin-top: 10px;">
-                        <label>
-                            <input type="checkbox" id="profile-avatar-clear_id" name="profile-avatar-clear">
-                            {% trans 'delete'|capfirst %}
-                        </label>
-                    </div>
-                {% else %}
-                    <p>{% trans 'You have not avatar' %}</p>
-                {% endif %}
-                <div>
-                    <input class=" form-control" id="id_profile-avatar" name="profile-avatar" type="file">
-                </div>
-            </div>
-            <div class="col-sm-9">
-                {% for field in profile_form %}
-                    {% if field.name != 'avatar' %}
-                        {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
-                        <div class="form-group{% if field.errors %} has-error{% endif %}">
-                            <label for="{{ field.id_for_label }}" class="control-label col-sm-3">
-                                {{ field.label|capfirst }}:
-                            </label>
-                            <div class="col-sm-9">
-                                {{ field }}
+
+<!-- Main content area -->
+
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="content-wrap">
+        <!-- User profile -->
+        <h2 class="title">Settings</h2>
+        <div class="user-profile">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home"
+                                                          role="tab" data-toggle="tab">Profile settings</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile"
+                                           role="tab" data-toggle="tab">Account settings</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title text-center">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                        href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Personal information
+                                </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="action" value="profile">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                {% if profile_form.instance.avatar %}
+                                                    <img class="img-responsive"
+                                                         src="{{ profile_form.instance.avatar.url }}">
+                                                    <div class="checkbox" style="margin-top: 10px;">
+                                                        <label>
+                                                            <input type="checkbox" id="profile-avatar-clear_id"
+                                                                   name="profile-avatar-clear">
+                                                            {% trans 'delete'|capfirst %}
+                                                        </label>
+                                                    </div>
+                                                {% else %}
+                                                    <p>{% trans 'You have not avatar' %}</p>
+                                                {% endif %}
+                                                <div>
+                                                    <input class=" form-control" id="id_profile-avatar"
+                                                           name="profile-avatar" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                {% for field in profile_form %}
+                                                    {% if field.name != 'avatar' %}
+                                                        {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
+                                                        <div class="form-group{% if field.errors %} has-error{% endif %}">
+                                                            <label for="{{ field.id_for_label }}"
+                                                                   class="control-label col-sm-3">
+                                                                {{ field.label|capfirst }}:
+                                                            </label>
+                                                            <div class="col-sm-9">
+                                                                {{ field }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                        <input type="submit" class="btn btn-primary"
+                                                               value="{% trans 'save'|capfirst %}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    {% endif %}
-                {% endfor %}
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <input type="submit" class="btn btn-primary" value="{% trans 'save'|capfirst %}">
                     </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <form class="form-horizontal" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="password">
+                        <div class="row">
+                            <div class="col-sm-offset12 col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <h2>{% trans 'change password'|capfirst %}</h2>
+                                    </div>
+                                </div>
+                                {% for field in password_form %}
+                                {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
+                                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                                        <label for="{{ field.id_for_label }}" class="control-label col-sm-3">
+                                            {{ field.label|capfirst }}:
+                                        </label>
+                                        <div class="col-sm-9">
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <input type="submit" class="btn btn-primary"
+                                               value="{% trans 'change password'|capfirst %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="email">
+                        <div class="row">
+                            <div class="col-sm-offset12 col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <h2>{% trans 'change email'|capfirst %}</h2>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">
+                                        {% trans 'yours email'|capfirst %}:
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <p class="form-control-static">{{ email_form.user.email }}</p>
+                                    </div>
+                                </div>
+                                {% for field in email_form %}
+                                    {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
+                                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                                        <label for="{{ field.id_for_label }}" class="control-label col-sm-3">
+                                            {{ field.label|capfirst }}:
+                                        </label>
+                                        <div class="col-sm-9">
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <input type="submit" class="btn btn-primary"
+                                               value="{% trans 'change email'|capfirst %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
-    <form class="form-horizontal" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="password">
-        <div class="row">
-            <div class="col-sm-offset-3 col-sm-9">
-                <div class="row">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <h2>{% trans 'change password'|capfirst %}</h2>
-                    </div>
-                </div>
-                {% for field in password_form %}
-                    {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
-                    <div class="form-group{% if field.errors %} has-error{% endif %}">
-                        <label for="{{ field.id_for_label }}" class="control-label col-sm-3">
-                            {{ field.label|capfirst }}:
-                        </label>
-                        <div class="col-sm-9">
-                            {{ field }}
-                        </div>
-                    </div>
-                {% endfor %}
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <input type="submit" class="btn btn-primary" value="{% trans 'change password'|capfirst %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <form class="form-horizontal" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="email">
-        <div class="row">
-            <div class="col-sm-offset-3 col-sm-9">
-                <div class="row">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <h2>{% trans 'change email'|capfirst %}</h2>
-                    </div>
-                </div>
-                 <div class="form-group">
-                        <label class="control-label col-sm-3">
-                            {% trans 'yours email'|capfirst %}:
-                        </label>
-                        <div class="col-sm-9">
-                            <p class="form-control-static">{{ email_form.user.email }}</p>
-                        </div>
-                    </div>
-                {% for field in email_form %}
-                    {% show_form_field_error field.errors 'col-sm-offset-3 col-sm-9' %}
-                    <div class="form-group{% if field.errors %} has-error{% endif %}">
-                        <label for="{{ field.id_for_label }}" class="control-label col-sm-3">
-                            {{ field.label|capfirst }}:
-                        </label>
-                        <div class="col-sm-9">
-                            {{ field }}
-                        </div>
-                    </div>
-                {% endfor %}
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                        <input type="submit" class="btn btn-primary" value="{% trans 'change email'|capfirst %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    </div>
+</div>
 {% endblock %}
