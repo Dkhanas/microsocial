@@ -1,38 +1,105 @@
-{% load static i18n%}
+{% load static i18n users humanize microsocial %}
 
-<div class="row">
-    <div class="col-xs-4">
-        <a href="{% url 'news' %}"><img src="{% static 'microsocial/images/logo.png' %}"></a>
-    </div>
-    <div class="col-xs-6">
-        {% if user.is_authenticated %}
-            <p style="margin-top: 20px; font-size: 16px;">
-                <a href="{% url 'news' %}" style="margin-right: 10px;">{% trans 'новини'|capfirst %}</a>
-                <a href="{% url 'user_profile' user.pk %}" style="margin-right: 10px;">{% trans 'мій профіль'|capfirst %}</a>
-                <a href="{% url 'friends' %}" style="margin-right: 10px;">{% trans 'друзі'|capfirst %}</a>
-                <a href="{% url 'messages' %}" style="margin-right: 10px;">{% trans 'повідомлення'|capfirst %}</a>
-                <a href="{% url 'search' %}" style="margin-right: 10px;">{% trans 'пошук'|capfirst %}</a>
-            </p>
+<!--<div class="row">-->
+    <!--<div class="col-xs-6">-->
+        <!--{% if user.is_authenticated %}-->
+            <!--<p style="margin-top: 20px; font-size: 16px;">-->
+                <!--<a href="{% url 'news' %}" style="margin-right: 10px;">{% trans 'новини'|capfirst %}</a>-->
+                <!--<a href="{% url 'user_profile' user.pk %}" style="margin-right: 10px;">{% trans 'мій профіль'|capfirst %}</a>-->
+                <!--<a href="{% url 'friends' %}" style="margin-right: 10px;">{% trans 'друзі'|capfirst %}</a>-->
+                <!--<a href="{% url 'messages' %}" style="margin-right: 10px;">{% trans 'повідомлення'|capfirst %}</a>-->
+                <!--<a href="{% url 'search' %}" style="margin-right: 10px;">{% trans 'пошук'|capfirst %}</a>-->
+            <!--</p>-->
 
-        {% endif %}
+        <!--{% endif %}-->
+    <!--</div>-->
+    <!--<div class="col-xs-2 text-right right">-->
+         <!--<form action="{% url 'set_language' %}" method="post">-->
+                <!--{% csrf_token %}-->
+                <!--<input name="next" type="hidden" value="{{ redirect_to }}">-->
+                <!--<input id="set_lang_code" name="language" type="hidden" value="">-->
+            <!--</form>-->
+                <!--{% get_language_info_list for LANGUAGES as languages %}-->
+                <!--{% for language in languages %}-->
+                    <!--<a href="#" title="{{ language.name_local }}"-->
+                       <!--{% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}-->
+                       <!--onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">-->
+                        <!--{{ language.code }}</a>-->
+                <!--{% endfor %}-->
+    <!--{% if user.is_authenticated %}-->
+        <!--<p style="margin-top: 10px;">-->
+            <!--<a href="{% url 'logout' %}">{% trans 'logout'|capfirst %}</a>-->
+        <!--</p>-->
+    <!--{% endif %}-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 logo-wrap no-padding">
+                <div class="logo">
+                    <a href="{% url 'news'%}" class="logo__item">
+                        <img src="{% static 'microsocial/images/borebo_logo.png' %}">
+                    </a>
+                </div>
+                 <!-- Search -->
+
+                <div class="search">
+                    <!--<input type="search" class="form-control search__item" placeholder="Find all what you want...">-->
+                    <!--<i class="fa fa-search search__item search__item_icon"></i>-->
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-8 col-md-9 col-sm-8 col-xs-12  no-padding">
+                          <div class="header-control text-right">
+                            <!--<a href="#createToolbox" class="fix-width btn btn-primary header-control__item open-overlay"><i class="fa fa-file-o"></i>Create-->
+                            <!--</a><a href="#library.html" type="button" class="fix-width btn btn-success header-control__item"><i class="fa fa-folder-open-o"></i>Library</a>-->
+                            <!--<a href="#library.html" type="button" class="fix-width btn btn-warning header-control__item"><i class="fa fa-shopping-bag"></i>Marketplace</a>-->
+                          {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <a href="#" title="{{ language.name_local }}"
+                                   {% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}
+                                   onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">
+                                    {{ language.code }}</a>
+                            {% endfor %}
+                          </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  no-padding">
+                        <div class="header-settings">
+                            <a href="{% url 'friends' %}" class="header-settings__item fa fa-users">
+                              <span>5</span>
+                            </a>
+                            <a href="{% url 'messages' %}" class="header-settings__item fa fa-envelope-o">
+                              <span>5</span>
+                            </a>
+                        </div>
+                        <div class="user-header-info dropdown-menu-control">
+                            <span class="user-header-info__item user-header-info__item_avatar hidden-xs">
+                                <img src="{{user|get_avatar}}" width="25" height="25">
+                            </span>
+                            <span class="user-header-info__item">{{user.first_name }} {{user.last_name}}</span>
+                            <i class="fa fa-arrow-down"></i>
+                            <div class="dropdown-user-menu text-left" style="">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'user_profile' user.pk %}">{% trans 'мій профіль'|capfirst %}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'settings' %}">{% trans 'settings'|capfirst %}</a>
+                                    </li>
+                                    <li>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}">{% trans 'logout'|capfirst %}</a>
+                                    {% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-2 text-right right">
-         <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                <input id="set_lang_code" name="language" type="hidden" value="">
-            </form>
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                    <a href="#" title="{{ language.name_local }}"
-                       {% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}
-                       onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">
-                        {{ language.code }}</a>
-                {% endfor %}
-    {% if user.is_authenticated %}
-        <p style="margin-top: 10px;">
-            <a href="{% url 'logout' %}">{% trans 'logout'|capfirst %}</a>
-        </p>
-    {% endif %}
     </div>
-</div>
