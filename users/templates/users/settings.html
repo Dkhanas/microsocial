@@ -35,7 +35,7 @@
                                         {% csrf_token %}
                                         <input type="hidden" name="action" value="profile">
                                         <div class="row">
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3 text-center">
                                                 {% if profile_form.instance.avatar %}
                                                     <img class="img-responsive"
                                                          src="{{ profile_form.instance.avatar.url }}">
@@ -49,8 +49,9 @@
                                                 {% else %}
                                                     <p>{% trans 'You have not avatar' %}</p>
                                                 {% endif %}
-                                                <div>
-                                                    <input class=" form-control" id="id_profile-avatar"
+                                                <div class="form-group">
+                                                    <label for="id_profile-avatar"><span class="btn btn-primary" >Select Image</span></label>
+                                                    <input style="visibility: hidden;" class=" form-control" id="id_profile-avatar"
                                                            name="profile-avatar" type="file">
                                                 </div>
                                             </div>
