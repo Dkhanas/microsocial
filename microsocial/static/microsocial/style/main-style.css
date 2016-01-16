@@ -111,10 +111,13 @@
   left: 0;
 }
 .userAvatar {
-  position: relative;
+  min-height: 153px;
 }
 .userAvatar img {
   border: 5px solid #fff;
+  border-radius: 50%;
+  height: 153px;
+  width: 153px;
 }
 .editAvatar {
   width: 100%;
@@ -852,4 +855,5 @@
   .open-select {
     margin: 10px 0;
   }
+
 }

@@ -16,11 +16,15 @@ from django.dispatch import Signal
 from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import render
+# from django.contrib.auth.decorators import login_required
 
-
+# @login_required
 def get_ids_from_users(*users):
+    #TODO: check this
+    # try:
     return [user.pk if isinstance(user, User) else int(user) for user in users]
-
+    # except SimpleLazyObject:
+    #     return redirect('news')
 
 class UserManger(BaseUserManager):
     def _create_user(self, email, password,

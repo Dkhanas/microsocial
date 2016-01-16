@@ -38,6 +38,9 @@
         <div class="moveMenuBtn hidden-lg hidden-md hidden-sm">
               <button type="button" class="btn btn-info"><i class="fa fa-bars"></i></button>
         </div>
+            {% block profile-header %}
+                <!--profile-header-->
+            {% endblock %}
         <div class="main">
             <div class="container">
                 <div class="row">
@@ -45,8 +48,8 @@
                         <div class="left-sidebar col-lg-3 col-md-3 col-sm-3 col-xs-8">
                             <!-- Search -->
                             <div class="search">
-                                <input type="search" class="form-control search__item">
-                                <i class="fa fa-search search__item search__item_icon"></i>
+                                <!--<input type="search" class="form-control search__item">-->
+                                <!--<i class="fa fa-search search__item search__item_icon"></i>-->
                             </div>
                             <!-- Left Menu -->
                             <ul class="left-menu list-unstyled">
@@ -117,7 +120,7 @@
                             </li>
                         </ul>
                         <div class="right-copyright col-lg-3 col-md-3 col-sm-5 col-xs-12 text-right">
-                            <div class="right-copyright__item">© All right are reserved to borebo 2015</div>
+                            <div class="right-copyright__item">© All right are reserved to borebo {% now "Y" %}</div>
                         </div>
                     </div>
                 </div>
