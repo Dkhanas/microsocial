@@ -16,4 +16,9 @@ def main(requests):
         video = VideoMainPage.objects.get(checked=True)
     except VideoMainPage.MultipleObjectsReturned:
         video = VideoMainPage.objects.latest('last_active')
+        videos_checked = VideoMainPage.objects.all()
+        for video_checked in videos_checked:
+            if video_checked != video:
+                video_checked.checked = False
+                video_checked.save()
     return render(requests, 'main.html', {'video': video})
