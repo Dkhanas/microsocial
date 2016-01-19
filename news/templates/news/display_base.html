@@ -9,7 +9,7 @@
             {% block between %}{% endblock %}
             {% block target %}
                 <img class="img-responsive" width="30" style="display: inline-block;" src="{{ item.target|get_avatar }}">
-                <a href="{% url 'user_profile' user.pk %}">{{ item.target.get_full_name }}</a>
+                <a href="{% url 'user_profile' item.target.pk %}">{{ item.target.get_full_name }}</a>
             {% endblock %}
             {% block after %}{% endblock %}
             {% block time %}

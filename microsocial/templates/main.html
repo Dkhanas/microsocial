@@ -1,4 +1,4 @@
-{% load static flatpages i18n microsocial%}
+{% load static flatpages i18n microsocial %}
 <!DOCTYPE html>
 <html lang={{ LANGUAGE_CODE }}>
     <head>
@@ -192,7 +192,7 @@
                                 </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Sign in</button>
-                                <!--TODO: passord recovery popup -->
+                                <!--TODO: password recovery popup -->
                                 <p><a href="#overlay-request" class="open-overlay">Forgot password?</a></p>
                              </div>
                         </form>
@@ -218,7 +218,6 @@
         </div>
 
         <!-- Request a Password Change -->
-
         <div class="overlay-wrap mfp-hide" id="overlay-request">
             <div class="container">
                 <div class="row">
@@ -227,12 +226,12 @@
                         <!--TODO: disable redirect to password recovery-->
                         {% if pwd_recovery_user %}
                             <p>
-                                {% blocktrans trimmed with e=registered_user.email %}
+                                {% blocktrans trimmed with e=pwd_recovery_user.email %}
                                     Confirm recovery password via a link sent to Your email {{ e }}.
                                 {% endblocktrans %}
                             </p>
                         {% else %}
-                            <form data-toggle="validator" action="/password-recovery/" role="form" method="post"
+                            <form data-toggle="validator" action="{% url 'password_recovery' %}" role="form" method="post"
                                                         novalidate="true" id="from-overlay-request">
                                 {% csrf_token %}
                                 <div class="form-group">

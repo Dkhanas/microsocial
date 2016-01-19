@@ -84,7 +84,7 @@ class PasswordRecovery(TemplateView):
             user = self.form_pwd.get_user()
             user.send_password_recovery_mail()
             request.session['pwd_recovery_user_id'] = user.pk
-            return redirect(request.path)
+            return redirect('main')
         return self.get(request, *args, **kwargs)
 
 
