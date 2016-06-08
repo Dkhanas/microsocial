@@ -2,9 +2,15 @@
 {% load i18n users microsocial %}
 
 {% block content %}
-    <h1>{% trans 'новини'|capfirst %}</h1>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="content-wrap">
+            <div role="tabpanel" class="tab-pane active" id="profile">
+    <h2 class="title">{% trans 'новини'|capfirst %}</h2>
     {% for item in items %}
         {% include item.get_template_for_display %}
     {% endfor %}
     {% show_paginator items %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -2,9 +2,10 @@
 {% load i18n microsocial dialogs users humanize%}
 
 {% block content %}
+
+            <h2 style="margin-top: 0;">{% trans 'Повідомлення'|capfirst %}</h2>
     <div class="row">
-        <div class="col-sm-4">
-            <h1 style="margin-top: 0;">{% trans 'Повідомлення'|capfirst %}</h1>
+        <div class="col-sm-2">
             {% for dialog in dialogs %}
                 {% get_opponent dialog as dialog_opponent %}
                 <div style="padding: 5px; {% if dialog_opponent == opponent %} background: #e38d13;{% endif %}">
@@ -18,7 +19,7 @@
             {% endfor %}
             {% show_paginator dialogs 'dialogs-page' %}
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             {% if opponent %}
                 <h4>
                     {% trans 'діалог з '|capfirst %}
@@ -30,11 +31,13 @@
                 {% csrf_token %}
                 {% show_form_field_error form.text.errors 'col-xs-9'%}
                 <div class="form-group{% if form.text.errors %} has-error{% endif %}">
-                    <div class="col-xs-9">
+                    <div class="col-lg-12">
                         {{ form.text }}
-                    </div>
-                    <div class="col-xs-3">
+                        <div class="row">
+                    <div class="col-lg-1">
                       {% if dialog_opponent != opponent %}  <input type="submit" class="btn btn-primary" value="{% trans 'відправити'|capfirst %}">{%  endif %}
+                    </div>
+                    </div>
                     </div>
                 </div>
             </form>
@@ -58,6 +61,8 @@
                 </div>
             {% endfor %}
             {% show_paginator dialog_messages 'messages-page' %}
+        </div>
+
         </div>
     </div>
 {% endblock %}
