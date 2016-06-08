@@ -1,30 +1,44 @@
 {% extends 'users/friends_base.html' %}
-{% load i18n  users microsocial%}
+{% load i18n static users microsocial%}
 
 {% block friends_content %}
-    <h1>{% trans 'вихідні заявки'|capfirst %}</h1>
-    {% for item in items %}
-        <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
-            <div class="col-sm-2">
-                <img class="img-responsive" src="{{ item.to_user|get_avatar }}">
+    <h2>{% trans 'вихідні заявки'|capfirst %}</h2>
+    <div role="tabpanel" class="tab-pane" id="requestMy">
+        {% for item in items %}
+            <div class="friends-list">
+           <!-- Friends item row -->
+                <div class="friends-list__item">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <img src="{{ item.to_user|get_avatar }}" class="img-circle" width="40px" height="40px" >
+                          <span><a href="{% url 'user_profile' item.to_user.pk %}">{{ item.to_user.get_full_name }}</a></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                          <form action="{% url 'friendship_api' %}" method="post" style="display: inline-block">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="delete_from_friends">
+                            <input type="hidden" name="user_id" value="{{ item.to_user.pk }}">
+                            <input type="hidden" name="next" value="{{ request.get_full_path}}">
+                            <input type="submit" class="fa fa-times" style="
+                                    border: hidden;
+                                    width: 10px;
+                                    height: 10px;
+                                    overflow: hidden;
+                                    color: transparent;
+                                    background: url({% static 'microsocial/images/delete.png' %}) no-repeat;
+                                    background-size: 10px 10px;
+                                    margin: 0 0 0 5px;
+                                    padding: 0;
+                                    "
+                                       value="{% trans 'видалити з друзів'|capfirst %}">
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-10">
-                <h3 style="margin-top: 20px;">
-                    <a href="{% url 'user_profile' item.to_user.pk %}">{{ item.to_user.get_full_name }}</a>
-                </h3>
-                <p>
-                    <form action="{% url 'friendship_api' %}" method="post" style="display: inline-block">
-                        {% csrf_token %}
-                        <input type="hidden" name="action" value="cancel_outcoming">
-                        <input type="hidden" name="user_id" value="{{ item.to_user.pk }}">
-                        <input type="hidden" name="next" value="{{ request.get_full_path}}">
-                        <input type="submit" class="btn btn-success btn-sm"
-                                   value="{% trans 'відмінити'|capfirst %}">
-                    </form>
-                </p>
-            </div>
-        </div>
-
-    {% endfor %}
-    {% show_paginator items %}
+        {% endfor %}
+        {% show_paginator items %}
+    </div>
 {% endblock %}
