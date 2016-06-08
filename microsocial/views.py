@@ -1,7 +1,6 @@
 # coding=utf-8
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
-from django.core.exceptions import MultipleObjectsReturned
+import datetime
+from django.shortcuts import render
 
 
 from videomain.models import VideoMainPage
@@ -16,9 +15,14 @@ def main(requests):
         video = VideoMainPage.objects.get(checked=True)
     except VideoMainPage.MultipleObjectsReturned:
         video = VideoMainPage.objects.latest('last_active')
-        videos_checked = VideoMainPage.objects.all()
+        videos_checked = VideoMainPage.objects.filter(checked=True)
         for video_checked in videos_checked:
             if video_checked != video:
                 video_checked.checked = False
                 video_checked.save()
+    except VideoMainPage.DoesNotExist:
+        video = VideoMainPage.objects.create(
+            video_url="https://www.youtube.com/embed/2OD3oeodNms",
+            checked=True,
+        )
     return render(requests, 'main.html', {'video': video})
