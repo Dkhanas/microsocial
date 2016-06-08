@@ -21,16 +21,7 @@
               <div class="cover-inner">
                 <div class="row tabs-row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div>
-                      <!-- Nav tabs -->
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true">{% trans "Profile" %}</a></li>
-                        <!--<li role="presentation" class=""><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab" aria-expanded="false">{% trans "Photos" %} <span class="counter">(1120)</span></a></li>-->
-                        <li role="presentation" class=""><a href="#friends" aria-controls="friends" role="tab" data-toggle="tab" aria-expanded="false">{% trans "Friends" %} <span class="counter">(120)</span></a></li>
-                      </ul>
-                    </div>
-                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
                 <!-- User profile control buttons -->
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <div class="control-buttons text-right">
@@ -100,447 +91,78 @@
      </div>
 {% endblock %}
 {% block content %}
-<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-
-                    <div class="content-wrap">
-
-                       <!-- Tab panes -->
-                      <div class="tab-content">
-                        <!-- User profile information -->
-                        <div role="tabpanel" class="tab-pane active" id="profile">
-
-                            <div class="userInformation">
-                                <h2>{% trans "Other information" %}</h2>
-
-                                <div class="userInformation__item">
-
-                                    <p>
-                                      <table class="table borderless">
-                <tbody>
-                    {% if profile_user.birth_date %}
-                        <tr>
-                            <td>{% trans 'birth data'|capfirst %}:</td>
-                            <td>{{ profile_user.birth_date }}</td>
-                        </tr>
-                    {% endif %}
-                    {% if profile_user.city %}
-                        <tr>
-                            <td>{% trans 'city'|capfirst %}:</td>
-                            <td>{{ profile_user.city }}</td>
-                        </tr>
-                    {% endif %}
-                    {% if profile_user.job %}
-                        <tr>
-                            <td>{% trans 'job'|capfirst %}:</td>
-                            <td>{{ profile_user.job }}</td>
-                        </tr>
-                    {% endif %}
-                    {% if profile_user.about_me %}
-                        <tr>
-                            <td>{% trans 'about me'|capfirst %}:</td>
-                            <td>{{ profile_user.about_me|linebreaksbr }}</td>
-                        </tr>
-                    {% endif %}
-                    {% if profile_user.interests %}
-                        <tr>
-                            <td>{% trans 'interests'|capfirst %}:</td>
-                            <td>{{ profile_user.interests|linebreaksbr }}</td>
-                        </tr>
-                    {% endif %}
-                </tbody>
-            </table>
-                                      </p>
-                                    <form class="form" method="post">
-                {% csrf_token %}
-                {% show_form_field_error wall_post_form.content.errors %}
-                <div class="form-group{% if wall_post_form.content.errors %} has-error{% endif %}">
-                    {{ wall_post_form.content }}
-                </div>
-                <input type="submit" class="btn btn-primary" value="{% trans 'post'|capfirst %}">
-            </form>
-            {% for wall_post in wall_posts %}
-                <div style="margin-top: 20px; border: 1px; solid #666; padding: 10px;">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img class="img-responsive" src="{{ wall_post.author|get_avatar }}">
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="content-wrap">
+            <div role="tabpanel" class="tab-pane active" id="profile">
+                <div class="userInformation">
+                    <h2>{% trans "Other information" %}</h2>
+                    <table class="table borderless">
+                        <tbody>
+                            {% if profile_user.birth_date %}
+                                <tr>
+                                    <td>{% trans 'birth data'|capfirst %}:</td>
+                                    <td>{{ profile_user.birth_date }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if profile_user.city %}
+                                <tr>
+                                    <td>{% trans 'city'|capfirst %}:</td>
+                                    <td>{{ profile_user.city }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if profile_user.job %}
+                                <tr>
+                                    <td>{% trans 'job'|capfirst %}:</td>
+                                    <td>{{ profile_user.job }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if profile_user.about_me %}
+                                <tr>
+                                    <td>{% trans 'about me'|capfirst %}:</td>
+                                    <td>{{ profile_user.about_me|linebreaksbr }}</td>
+                                </tr>
+                            {% endif %}
+                            {% if profile_user.interests %}
+                                <tr>
+                                    <td>{% trans 'interests'|capfirst %}:</td>
+                                    <td>{{ profile_user.interests|linebreaksbr }}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <form class="form" method="post">
+                        {% csrf_token %}
+                        {% show_form_field_error wall_post_form.content.errors %}
+                        <div class="form-group{% if wall_post_form.content.errors %} has-error{% endif %}">
+                            {{ wall_post_form.content }}
                         </div>
-                        <div class="col-sm-9">
-                            <div>
-                                <a href="{% url 'user_profile' wall_post.author_id %}">
-                                    {{ wall_posts.author.get_full_name }}
-                                </a>
-                                <span title="{{ wall_post.created }}" style="margin-left: 20px;">
-                                    {{ wall_post.created|naturaltime }}
-                                </span>
-                            </div>
-                            <div style="margin-top: 12px;">
-                                {{ wall_post.content|linebreaksbr }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        {% show_paginator wall_posts %}
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="photos">
-
-                          <div class="container">
+                        <input type="submit" class="btn btn-primary" value="{% trans 'post'|capfirst %}">
+                    </form>
+                    {% for wall_post in wall_posts %}
+                        <div style="margin-top: 20px; border: 1px solid #666; padding: 10px;">
                             <div class="row">
-                              <h2>Photos</h2>
-                              <div class="createButton  col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                <a href="createNewAlbum.html" class="btn btn-success">Create new album</a>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="album-wrap">
-                                <!-- Album block -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="album-wrap__item text-left">
-                                      <div class="previewAlbum">
-                                          <a href="myProfilePhoto.html"><img src="http://placehold.it/255x245"></a>
-                                          <span class="control-btns">
-                                              <a href="#">
-                                                <i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit this album"></i>
-                                              </a>
-                                              <a href="#">
-                                                <i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove this album"></i>
-                                              </a>
-                                          </span>
-                                      </div>
-                                      <h3><a href="myProfilePhoto.html">Album title (50 photos)</a></h3>
+                                <div class="col-sm-2">
+                                    <img class="img-responsive" src="{{ wall_post.author|get_avatar }}">
+                                </div>
+                                <div class="col-sm-9">
+                                    <div>
+                                        <a href="{% url 'user_profile' wall_post.author_id %}">
+                                            {{ wall_posts.author.get_full_name }}
+                                        </a>
+                                        <span title="{{ wall_post.created }}" style="margin-left: 20px;">
+                                            {{ wall_post.created|naturaltime }}
+                                        </span>
+                                    </div>
+                                    <div style="margin-top: 12px;">
+                                        {{ wall_post.content|linebreaksbr }}
                                     </div>
                                 </div>
-                                 <!-- Album block -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="album-wrap__item text-right">
-                                      <div class="previewAlbum">
-                                          <a href="myProfilePhoto.html"><img src="http://placehold.it/255x245"></a>
-                                          <span class="control-btns">
-                                              <a href="#">
-                                                <i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit this album"></i>
-                                              </a>
-                                              <a href="#">
-                                                <i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove this album"></i>
-                                              </a>
-                                          </span>
-                                      </div>
-                                      <h3><a href="myProfilePhoto.html">Album title2 (2 photos)</a></h3>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                        </div>
-
-                        <div role="tabpanel" class="tab-pane" id="friends">
-                            <div class="friends-wrap">
-                              <h2>Friends</h2>
-                                <div>
-
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                  <li role="presentation" class="active"><a href="#allF" aria-controls="allF" role="tab" data-toggle="tab" aria-expanded="false">All friends (5)</a></li>
-                                  <li role="presentation" class=""><a href="#requestF" aria-controls="requestF" role="tab" data-toggle="tab" aria-expanded="false">Friend requests (2)</a></li>
-                                  <li role="presentation" class=""><a href="#requestMy" aria-controls="requestMy" role="tab" data-toggle="tab" aria-expanded="false">My requests (2)</a></li>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                  <div role="tabpanel" class="tab-pane active" id="allF">
-                                    <!-- All friends -->
-                                      {% block all_friends %}
-                                    <div class="friends-list">
-                                      <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>John Snow</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from friends"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>Tirion Lannister</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from friends"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>Ned Stark</span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from friends"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>Hodor</span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from friends"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>Shani Aenean Bar</span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from friends"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    {% endblock %}
-                                  </div>
-
-                                  <div role="tabpanel" class="tab-pane" id="requestF">
-
-                                     <div class="friends-list">
-                                       <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>John Snow</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Add to friends</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from my request"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                         <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>John Snow</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Add to friends</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from my request"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                  </div>
-                                  <div role="tabpanel" class="tab-pane" id="requestMy">
-
-                                        <div class="friends-list">
-                                       <!-- Friends item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>John Snow</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from my request"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-
-                                         <!-- Frieds item row -->
-                                        <div class="friends-list__item">
-                                            <div class="container">
-                                              <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                  <img src="http://placehold.it/40x40" class="img-circle">
-                                                  <span>John Snow</span>
-                                                  <span class="friendOnline"></span>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
-                                                  <button class="btn btn-primary">Send a message</button>
-                                                  <i class="fa fa-times removeFromFriendList" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove from my request"></i>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                  </div>
-
-
-
-                                </div>
-
-                              </div>
                             </div>
                         </div>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-
-    <!--<div class="row">-->
-        <!--<div class="col-xs-3">-->
-            <!--<div style="margin-top: 20px;">-->
-                <!--<img class="img-responsive" src="{{ profile_user|get_avatar }}">-->
-            <!--</div>-->
-            <!--<div class="text-center" style="margin-top: 10px;">-->
-                <!--{% if profile_user == user %}-->
-                    <!--<a href="{% url 'settings' %}">{% trans 'settings'|capfirst %}</a>-->
-                <!--{% else %}-->
-                   <!--{% if is_my_friend %}-->
-                       <!--<form action="{% url 'friendship_api' %}" method="post">-->
-                            <!--{% csrf_token %}-->
-                            <!--<input type="hidden" name="action" value="delete_from_friends">-->
-                            <!--<input type="hidden" name="user_id" value="{{ profile_user.pk }}">-->
-                            <!--<input type="hidden" name="next" value="{{ request.get_full_path}}">-->
-                            <!--<input type="submit" class="btn btn-danger"-->
-                                   <!--value="{% trans 'видалити з друзів'|capfirst %}">-->
-                       <!--</form>-->
-                   <!--{% else %}-->
-                       <!--<form action="{% url 'friendship_api' %}" method="post">-->
-                            <!--{% csrf_token %}-->
-                            <!--<input type="hidden" name="action" value="add_to_friends">-->
-                            <!--<input type="hidden" name="user_id" value="{{ profile_user.pk }}">-->
-                            <!--<input type="hidden" name="next" value="{{ request.get_full_path}}">-->
-                            <!--<input type="submit" class="btn btn-success"-->
-                                   <!--value="{% trans 'додати в друзі'|capfirst %}">-->
-                       <!--</form>-->
-                   <!--{% endif %}-->
-                    <!--<div style="margin-top: 10px;">-->
-                        <!--<a href="{% url 'messages' profile_user.pk %}">-->
-                            <!--{% trans 'написати повідомлення'|capfirst %}-->
-                        <!--</a>-->
-                    <!--</div>-->
-                <!--{% endif %}-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-xs-9">-->
-            <!--<h1>{{ profile_user.get_full_name }}</h1>-->
-            <!--<table class="table borderless">-->
-                <!--<tbody>-->
-                    <!--{% if profile_user.sex %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'sex'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.get_sex_display }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                    <!--{% if profile_user.birth_date %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'birth data'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.birth_date }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                    <!--{% if profile_user.city %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'city'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.city }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                    <!--{% if profile_user.job %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'job'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.job }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                    <!--{% if profile_user.about_me %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'about me'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.about_me|linebreaksbr }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                    <!--{% if profile_user.interests %}-->
-                        <!--<tr>-->
-                            <!--<td>{% trans 'interests'|capfirst %}:</td>-->
-                            <!--<td>{{ profile_user.interests|linebreaksbr }}</td>-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                <!--</tbody>-->
-            <!--</table>-->
-            <!--<form class="form" method="post">-->
-                <!--{% csrf_token %}-->
-                <!--{% show_form_field_error wall_post_form.content.errors %}-->
-                <!--<div class="form-group{% if wall_post_form.content.errors %} has-error{% endif %}">-->
-                    <!--{{ wall_post_form.content }}-->
-                <!--</div>-->
-                <!--<input type="submit" class="btn btn-primary" value="{% trans 'post'|capfirst %}">-->
-            <!--</form>-->
-            <!--{% for wall_post in wall_posts %}-->
-                <!--<div style="margin-top: 20px; border: 1px; solid #666; padding: 10px;">-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-sm-2">-->
-                            <!--<img class="img-responsive" src="{{ wall_post.author|get_avatar }}">-->
-                        <!--</div>-->
-                        <!--<div class="col-sm-9">-->
-                            <!--<div>-->
-                                <!--<a href="{% url 'user_profile' wall_post.author_id %}">-->
-                                    <!--{{ wall_posts.author.get_full_name }}-->
-                                <!--</a>-->
-                                <!--<span title="{{ wall_post.created }}" style="margin-left: 20px;">-->
-                                    <!--{{ wall_post.created|naturaltime }}-->
-                                <!--</span>-->
-                            <!--</div>-->
-                            <!--<div style="margin-top: 12px;">-->
-                                <!--{{ wall_post.content|linebreaksbr }}-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--{% endfor %}-->
-        <!--{% show_paginator wall_posts %}-->
-        <!--</div>-->
-    <!--</div>-->
+                    {% endfor %}
+                </div>
+            </div>
+            {% show_paginator wall_posts %}
+        </div>
+    </div>
 {% endblock %}
