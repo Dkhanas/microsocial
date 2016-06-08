@@ -75,7 +75,8 @@
                                 <!--</li>-->
                                 <li class="left-menu__item">
                                     <a href="{% url 'friends' %}">
-                                    <i class="fa fa-users"></i>{% trans 'друзі'|capfirst %}<span class="newRequest">5</span>
+                                    <i class="fa fa-users"></i>{% trans 'друзі'|capfirst %}
+{#                                        <span class="newRequest">5</span>#}
                                 </a>
                                 </li>
                                 <li class="left-menu__item">
@@ -91,7 +92,7 @@
                             </ul>
                             <!-- Video banner -->
                              <div class="videobanner">
-                                 <img class="videobanner__item" src="http://placehold.it/264x374" />
+{#                                 <img class="videobanner__item" src="http://placehold.it/264x374" />#}
                              </div>
                         </div>
                     {% show_messages %}
@@ -129,6 +130,7 @@
             </div>
         {% block js %}
                 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <script src="{% static 'microsocial/js/jquery-1.11.3.min.js'%}"></script>
                 <script src="{% static 'microsocial/js/jquery-1.11.3.min.js'%}"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="{% static 'microsocial/js/bootstrap.min.js'%}"></script>

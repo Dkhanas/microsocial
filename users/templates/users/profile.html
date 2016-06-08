@@ -251,6 +251,7 @@
                                 <div class="tab-content">
                                   <div role="tabpanel" class="tab-pane active" id="allF">
                                     <!-- All friends -->
+                                      {% block all_friends %}
                                     <div class="friends-list">
                                       <!-- Frieds item row -->
                                         <div class="friends-list__item">
@@ -335,7 +336,7 @@
                                         </div>
 
                                     </div>
-
+                                    {% endblock %}
                                   </div>
 
                                   <div role="tabpanel" class="tab-pane" id="requestF">

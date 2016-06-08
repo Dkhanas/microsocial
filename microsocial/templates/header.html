@@ -57,22 +57,22 @@
                             <!--<a href="#createToolbox" class="fix-width btn btn-primary header-control__item open-overlay"><i class="fa fa-file-o"></i>Create-->
                             <!--</a><a href="#library.html" type="button" class="fix-width btn btn-success header-control__item"><i class="fa fa-folder-open-o"></i>Library</a>-->
                             <!--<a href="#library.html" type="button" class="fix-width btn btn-warning header-control__item"><i class="fa fa-shopping-bag"></i>Marketplace</a>-->
-                          {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <a href="#" title="{{ language.name_local }}"
-                                   {% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}
-                                   onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">
-                                    {{ language.code }}</a>
-                            {% endfor %}
+{#                          {% get_language_info_list for LANGUAGES as languages %}#}
+{#                            {% for language in languages %}#}
+{#                                <a href="#" title="{{ language.name_local }}"#}
+{#                                   {% if language.code == LANGUAGE_CODE %}style="font-weight: bold;" {% endif %}#}
+{#                                   onclick="$('#set_lang_code').val('{{ language.code }}').closest('form').submit(); return false;">#}
+{#                                    {{ language.code }}</a>#}
+{#                            {% endfor %}#}
                           </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right  no-padding">
                         <div class="header-settings">
                             <a href="{% url 'friends' %}" class="header-settings__item fa fa-users">
-                              <span>5</span>
+{#                              <span>5</span>#}
                             </a>
                             <a href="{% url 'messages' %}" class="header-settings__item fa fa-envelope-o">
-                              <span>5</span>
+{#                              <span>5</span>#}
                             </a>
                         </div>
                         <div class="user-header-info dropdown-menu-control">
