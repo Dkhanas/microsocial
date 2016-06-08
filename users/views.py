@@ -27,7 +27,7 @@ class ProfileViews(TemplateView):
         return super(ProfileViews, self).dispatch(request, *args, **kwargs)
 
     def get_wall_posts(self):
-        paginator = Paginator(self.user.wall_posts.select_related('author'), 20)
+        paginator = Paginator(self.user.wall_posts.select_related('author'), 10)
         page = self.request.GET.get('page')
         try:
             wall_posts = paginator.page(page)

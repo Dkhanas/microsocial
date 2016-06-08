@@ -1,15 +1,40 @@
 {% extends 'base.html' %}
 {% load i18n microsocial users %}
 {% block content %}
-    <h1 class="text-center">{% trans 'пошук людей'|capfirst %}</h1>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="content-wrap">
+    <h2 class="title">{% trans 'пошук людей'|capfirst %}</h2>
+    <div class="user-profile">
     <div class="row">
-        <div class="col-sm-5">
+    <div class="col-sm-6 text-center">
+         {% for item in items %}
+        <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="col-sm-3">
+                <img class="img-responsive" src="{{ item|get_avatar }}">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <span>
+                    <a href="{% url 'user_profile' item.pk %}">{{ item.get_full_name }}</a>
+                </span>
+                {% with age=item.get_age %}
+                    {% if age %}
+                        {% blocktrans  %}{{ age }}{% endblocktrans %}
+                    {% endif %}
+                {% endwith %}
+                {% if item.city %}
+                    {{ item.city }}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="col-sm-6">
             <form class="form-horizontal">
                 <div class="form-group">
                     <label for="{{ form.name.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.name.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.name }}
                     </div>
                 </div>
@@ -17,7 +42,7 @@
                     <label for="{{ form.sex.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.sex.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.sex }}
                     </div>
                 </div>
@@ -25,18 +50,23 @@
                     <label for="{{ form.by_from.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.by_from.label|capfirst }}
                     </label>
-                    <div class="col-sm-3">
+
+                    <div class="col-sm-6">
                         {{ form.by_from }}
                     </div>
-                    <div class="col-sm-3">
+                    </div>
+                <div class="form-group">
+                    <label  class="col-sm-5 control-label">
+                    </label>
+                    <div class="col-sm-6">
                         {{ form.to_from }}
                     </div>
-                </div>
+               </div>
                 <div class="form-group">
                     <label for="{{ form.city.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.city.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.city }}
                     </div>
                 </div>
@@ -44,7 +74,7 @@
                     <label for="{{ form.job.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.job.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.job }}
                     </div>
                 </div>
@@ -52,7 +82,7 @@
                     <label for="{{ form.about_me.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.about_me.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.about_me|linebreaksbr }}
                     </div>
                 </div>
@@ -60,7 +90,7 @@
                     <label for="{{ form.interests.id_for_label }}" class="col-sm-5 control-label">
                         {{ form.interests.label|capfirst }}
                     </label>
-                    <div class="col-sm-7">
+                    <div class="col-sm-6">
                         {{ form.interests|linebreaksbr }}
                     </div>
                 </div>
@@ -70,29 +100,11 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="col-sm-7">
-            {% for item in items %}
-                <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
-                    <div class="col-sm-2">
-                        <img class="img-responsive" src="{{ item|get_avatar }}">
-                    </div>
-                    <div class="col-sm-10">
-                        <h3 style="margin-top: 0;">
-                            <a href="{% url 'user_profile' item.pk %}">{{ item.get_full_name }}</a>
-                        </h3>
-                        {% with age=item.get_age %}
-                            {% if age %}
-                                <p>{% blocktrans  %}{{ age }}{% endblocktrans %}</p>
-                            {% endif %}
-                        {% endwith %}
-                        {% if item.city %}
-                            <p>{{ item.city }}</p>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
+    </div>
+           </div>
+
             {% show_paginator items %}
         </div>
     </div>
+        </div>
 {% endblock %}
