@@ -10,8 +10,13 @@ class MessageForm(forms.ModelForm, BootstrapFormMixin):
         model = Message
         fields = ('text',)
         widgets = {
-            'text': forms.Textarea(attrs={'rows': 4, 'placeholder': _(u'введіть повідомлення')})
-        }
+            'text': forms.Textarea(
+                attrs={"class": " form-control",
+                       "cols": "40", "id": "id_text",
+                       "maxlength": "2000", "name": "text",
+                       "rows": "4", "style": "margin-bottom: 10px;",
+                       'placeholder': _(u'введіть повідомлення')})
+                    }
 
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)

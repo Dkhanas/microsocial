@@ -855,5 +855,26 @@
   .open-select {
     margin: 10px 0;
   }
-
+  .user-profile .col-lg-6{
+    text-align: left;
+  }
+  .user-profile .col-lg-6 span{
+    display: block;
+  }
+   .message_item a{
+  display: block;
+}
+#id_text{
+  margin-bottom: 10px;
+}
+.user_message_wrap{
+  padding: 30px 20px;
+  clear: both;
+  border: 1px solid #000;
+  / border-top: none; /
+  background: #fff;
+  clear: both;
+  position: relative;
+  top: 20px;
+}
 }
